@@ -130,12 +130,27 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Card content stagger: p 0.30+
+    // Envelope z-index: drop it behind card when faded
+    if (envelope) {
+      envelope.style.zIndex = p > 0.45 ? '0' : '5';
+      envelope.style.pointerEvents = p > 0.45 ? 'none' : 'auto';
+    }
+
+    // Card content: p 0.30+ show all children directly
     if (card) {
+      const children = card.querySelectorAll('.invitation-inner > *');
       if (p > 0.30) {
         card.classList.add('visible');
+        children.forEach(ch => {
+          ch.style.opacity = '1';
+          ch.style.transform = 'translateY(0)';
+        });
       } else {
         card.classList.remove('visible');
+        children.forEach(ch => {
+          ch.style.opacity = '0';
+          ch.style.transform = 'translateY(14px)';
+        });
       }
     }
 
