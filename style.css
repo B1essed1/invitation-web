@@ -17,10 +17,9 @@
   --font-script: 'Great Vibes', cursive;
   --font-body: 'Raleway', 'Segoe UI', sans-serif;
 
-  --envelope-color: #8B9E7E;
-  --envelope-color-dark: #7A8D6E;
-  --envelope-color-light: #99AC8C;
-  --botanical-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.07)' stroke-width='0.7'%3E%3Ccircle cx='65' cy='55' r='24'/%3E%3Ccircle cx='65' cy='55' r='15'/%3E%3Ccircle cx='65' cy='55' r='7'/%3E%3Cpath d='M65,31 C74,24 78,34 72,40'/%3E%3Cpath d='M65,31 C56,24 52,34 58,40'/%3E%3Cpath d='M89,55 C96,46 88,42 82,48'/%3E%3Cpath d='M89,55 C96,64 88,68 82,62'/%3E%3Cpath d='M41,55 C34,46 42,42 48,48'/%3E%3Cpath d='M41,55 C34,64 42,68 48,62'/%3E%3Cpath d='M65,79 C74,86 78,76 72,70'/%3E%3Cpath d='M65,79 C56,86 52,76 58,70'/%3E%3Cpath d='M41,42 C25,32 15,48 30,54'/%3E%3Cpath d='M89,68 C105,78 115,62 100,56'/%3E%3Ccircle cx='155' cy='150' r='22'/%3E%3Ccircle cx='155' cy='150' r='13'/%3E%3Ccircle cx='155' cy='150' r='6'/%3E%3Cpath d='M155,128 C163,122 168,132 162,137'/%3E%3Cpath d='M155,128 C147,122 142,132 148,137'/%3E%3Cpath d='M177,150 C183,142 176,138 170,143'/%3E%3Cpath d='M133,150 C127,142 134,138 140,143'/%3E%3Cpath d='M155,172 C163,178 168,168 162,163'/%3E%3Cpath d='M155,172 C147,178 142,168 148,163'/%3E%3Cpath d='M133,140 C118,126 106,140 120,150'/%3E%3Cpath d='M15,145 Q32,128 50,145 Q32,162 15,145Z'/%3E%3Cline x1='32' y1='130' x2='32' y2='160'/%3E%3Cpath d='M23,138 L32,145'/%3E%3Cpath d='M41,138 L32,145'/%3E%3Cpath d='M125,15 Q142,0 160,15 Q142,32 125,15Z'/%3E%3Cline x1='142' y1='3' x2='142' y2='30'/%3E%3Cpath d='M133,9 L142,15'/%3E%3Cpath d='M151,9 L142,15'/%3E%3Cpath d='M5,8 Q18,-2 32,8 Q18,20 5,8Z'/%3E%3Cline x1='18' y1='0' x2='18' y2='18'/%3E%3Ccircle cx='108' cy='100' r='8'/%3E%3Ccircle cx='108' cy='100' r='4'/%3E%3Cpath d='M108,92 C113,88 116,93 112,96'/%3E%3Cpath d='M108,92 C103,88 100,93 104,96'/%3E%3Ccircle cx='28' cy='88' r='6'/%3E%3Ccircle cx='28' cy='88' r='3'/%3E%3Ccircle cx='180' cy='78' r='7'/%3E%3Ccircle cx='180' cy='78' r='3'/%3E%3Cpath d='M65,79 C60,98 75,108 108,100'/%3E%3Cpath d='M155,172 C150,188 135,192 120,186'/%3E%3Cpath d='M50,145 C62,158 82,164 105,158'/%3E%3Cpath d='M82,95 Q88,87 94,95 Q88,103 82,95Z'/%3E%3Cpath d='M138,182 Q144,174 150,182 Q144,190 138,182Z'/%3E%3Cpath d='M172,28 Q178,20 184,28 Q178,36 172,28Z'/%3E%3Cpath d='M2,172 Q8,164 14,172 Q8,180 2,172Z'/%3E%3Cpath d='M96,8 Q102,0 108,8 Q102,16 96,8Z'/%3E%3Cpath d='M185,120 Q192,112 200,120 Q192,128 185,120Z'/%3E%3Cpath d='M60,178 Q68,170 76,178 Q68,186 60,178Z'/%3E%3Cline x1='68' y1='172' x2='68' y2='184'/%3E%3C/g%3E%3C/svg%3E");
+  --envelope-base: #ede4d8;
+  --envelope-flap: #e2d9cc;
+  --botanical-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.22)' stroke-width='1'%3E%3Ccircle cx='100' cy='85' r='42'/%3E%3Ccircle cx='100' cy='85' r='30'/%3E%3Ccircle cx='100' cy='85' r='18'/%3E%3Ccircle cx='100' cy='85' r='7'/%3E%3Cpath d='M100,43 C118,28 130,48 118,58'/%3E%3Cpath d='M100,43 C82,28 70,48 82,58'/%3E%3Cpath d='M142,85 C158,68 142,52 128,68'/%3E%3Cpath d='M142,85 C158,102 142,118 128,102'/%3E%3Cpath d='M58,85 C42,68 58,52 72,68'/%3E%3Cpath d='M58,85 C42,102 58,118 72,102'/%3E%3Cpath d='M100,127 C118,142 130,122 118,112'/%3E%3Cpath d='M100,127 C82,142 70,122 82,112'/%3E%3Cpath d='M132,55 C148,42 145,62 132,68'/%3E%3Cpath d='M68,55 C52,42 55,62 68,68'/%3E%3Cpath d='M132,115 C148,128 145,108 132,102'/%3E%3Cpath d='M68,115 C52,128 55,108 68,102'/%3E%3Cpath d='M48,48 C22,22 0,55 25,72'/%3E%3Cpath d='M25,50 L42,55'/%3E%3Cpath d='M30,62 L42,56'/%3E%3Cpath d='M152,122 C178,148 200,115 175,98'/%3E%3Cpath d='M175,120 L158,115'/%3E%3Cpath d='M170,108 L158,114'/%3E%3Ccircle cx='30' cy='210' r='35'/%3E%3Ccircle cx='30' cy='210' r='24'/%3E%3Ccircle cx='30' cy='210' r='12'/%3E%3Cpath d='M30,175 C45,162 55,180 45,190'/%3E%3Cpath d='M30,175 C15,162 5,180 15,190'/%3E%3Cpath d='M65,210 C78,195 65,182 52,195'/%3E%3Cpath d='M-5,210 C-18,195 -5,182 8,195'/%3E%3Cpath d='M30,245 C45,258 55,240 45,230'/%3E%3Cpath d='M30,245 C15,258 5,240 15,230'/%3E%3Cpath d='M195,18 Q215,-2 235,18 Q215,38 195,18Z'/%3E%3Cline x1='215' y1='2' x2='215' y2='34'/%3E%3Cpath d='M205,10 L215,18'/%3E%3Cpath d='M225,10 L215,18'/%3E%3Cpath d='M175,42 Q192,28 210,42 Q192,58 175,42Z'/%3E%3Cline x1='192' y1='30' x2='192' y2='55'/%3E%3Cpath d='M220,170 Q235,155 250,170 Q235,185 220,170Z'/%3E%3Cline x1='235' y1='158' x2='235' y2='182'/%3E%3Cpath d='M5,135 Q18,122 32,135 Q18,148 5,135Z'/%3E%3Cline x1='18' y1='125' x2='18' y2='145'/%3E%3Cpath d='M100,127 C95,158 78,180 45,200'/%3E%3Cpath d='M152,122 C168,148 182,168 205,175'/%3E%3C/g%3E%3C/svg%3E");
 
   --transition-smooth: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --transition-bounce: 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -37,7 +36,7 @@ body.no-scroll {
 .envelope-section {
   height: 300vh;
   position: relative;
-  background: #f5f0e8;
+  background: #f8f4ef;
 }
 
 .envelope-wrapper {
@@ -74,13 +73,13 @@ body.no-scroll {
   cursor: pointer;
 }
 
-/* Envelope body — full screen green with botanical pattern */
+/* Envelope body — full screen cream with embossed botanical */
 .envelope-body {
   position: absolute;
   inset: 0;
-  background-color: #7c8e6e;
+  background-color: var(--envelope-base);
   background-image: var(--botanical-pattern);
-  background-size: 200px 200px;
+  background-size: 250px 250px;
   transition: opacity 1.4s ease;
 }
 
@@ -91,9 +90,9 @@ body.no-scroll {
   left: 0;
   width: 100%;
   height: 28vh;
-  background-color: #6e8060;
+  background-color: var(--envelope-flap);
   background-image: var(--botanical-pattern);
-  background-size: 200px 200px;
+  background-size: 250px 250px;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   z-index: 1;
 }
@@ -105,9 +104,32 @@ body.no-scroll {
   left: 12%;
   right: 12%;
   bottom: 15%;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
   clip-path: polygon(0 0, 50% 90%, 100% 0);
   pointer-events: none;
+}
+
+/* Ribbon bands behind the seal */
+.envelope-ribbon-l,
+.envelope-ribbon-r {
+  position: absolute;
+  height: 22px;
+  background: linear-gradient(to bottom, rgba(225,218,208,0.4), rgba(215,208,196,0.7), rgba(225,218,208,0.4));
+  top: 42%;
+  z-index: 6;
+  width: 55%;
+}
+
+.envelope-ribbon-l {
+  right: 48%;
+  transform-origin: right center;
+  transform: rotate(4deg);
+}
+
+.envelope-ribbon-r {
+  left: 48%;
+  transform-origin: left center;
+  transform: rotate(-4deg);
 }
 
 /* Envelope label */
@@ -124,8 +146,8 @@ body.no-scroll {
 .envelope-label p {
   font-family: var(--font-script);
   font-size: clamp(1.8rem, 6vw, 2.8rem);
-  color: rgba(255,255,255,0.88);
-  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  color: rgba(160,140,120,0.7);
+  text-shadow: 0 1px 2px rgba(255,255,255,0.4);
 }
 
 /* ---- Wax seal (large, centered, lifts up on open) ---- */
@@ -138,62 +160,62 @@ body.no-scroll {
 }
 
 .wax-seal-inner {
-  width: 110px;
-  height: 110px;
+  width: 115px;
+  height: 115px;
   background:
-    radial-gradient(circle at 35% 30%, rgba(255,200,180,0.3) 0%, transparent 40%),
-    radial-gradient(circle at 65% 70%, rgba(40,10,5,0.35) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, #c0392b 0%, #ab332a 30%, #922b21 50%, #7b241c 70%, #5e1810 100%);
+    radial-gradient(circle at 32% 28%, rgba(255,230,215,0.45) 0%, transparent 35%),
+    radial-gradient(circle at 68% 72%, rgba(140,95,75,0.3) 0%, transparent 35%),
+    radial-gradient(circle at 50% 50%, #dbb5a0 0%, #d0a590 25%, #c49580 45%, #b88570 60%, #a87565 80%, #9a6858 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   box-shadow:
-    0 8px 25px rgba(0,0,0,0.45),
-    0 15px 40px rgba(100,26,20,0.3),
-    inset 0 3px 8px rgba(255,255,255,0.2),
-    inset 0 -4px 10px rgba(0,0,0,0.35);
+    0 6px 20px rgba(0,0,0,0.18),
+    0 12px 35px rgba(160,120,100,0.15),
+    inset 0 2px 6px rgba(255,255,255,0.35),
+    inset 0 -3px 8px rgba(0,0,0,0.18);
 }
 
 .wax-seal-inner::before {
   content: '';
   position: absolute;
-  inset: 9px;
-  border: 1.5px solid rgba(255,255,255,0.10);
+  inset: 10px;
+  border: 2px solid rgba(190,155,135,0.35);
   border-radius: 50%;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.25), inset 0 1px 0 rgba(0,0,0,0.08);
 }
 
 .wax-seal-inner::after {
   content: '';
   position: absolute;
   top: 10px;
-  left: 14px;
-  width: 28px;
-  height: 16px;
-  background: rgba(255,255,255,0.10);
+  left: 16px;
+  width: 30px;
+  height: 18px;
+  background: rgba(255,255,255,0.12);
   border-radius: 50%;
   transform: rotate(-30deg);
 }
 
 .wax-seal-inner span {
   font-family: var(--font-script);
-  font-size: 1.9rem;
-  color: rgba(255,255,255,0.9);
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  font-size: 2rem;
+  color: rgba(175,135,115,0.65);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.35), 0 -1px 1px rgba(0,0,0,0.12);
   position: relative;
   z-index: 1;
 }
 
 .wax-drip {
   position: absolute;
-  background: radial-gradient(ellipse at 40% 30%, #b5342a, #7b2420);
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
 }
 
-.wax-drip-1 { width: 18px; height: 22px; bottom: -14px; left: 20px; transform: rotate(-18deg); }
-.wax-drip-2 { width: 14px; height: 18px; bottom: -12px; right: 22px; transform: rotate(12deg); }
-.wax-drip-3 { width: 12px; height: 16px; top: -8px; right: 14px; transform: rotate(22deg); }
+.wax-drip-1 { width: 16px; height: 20px; bottom: -12px; left: 22px; transform: rotate(-18deg); background: radial-gradient(ellipse at 40% 30%, #c49a88, #a87868); }
+.wax-drip-2 { width: 12px; height: 16px; bottom: -10px; right: 24px; transform: rotate(12deg); background: radial-gradient(ellipse at 40% 30%, #c49a88, #a87868); }
+.wax-drip-3 { width: 10px; height: 14px; top: -6px; right: 16px; transform: rotate(22deg); background: radial-gradient(ellipse at 40% 30%, #c49a88, #a87868); }
 
 /* ---- Tap prompt ---- */
 .open-prompt {

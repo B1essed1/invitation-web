@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const envBody = envelope ? envelope.querySelector('.envelope-body') : null;
   const envFlap = envelope ? envelope.querySelector('.envelope-flap-deco') : null;
   const envLabel = envelope ? envelope.querySelector('.envelope-label') : null;
+  const envRibbonL = envelope ? envelope.querySelector('.envelope-ribbon-l') : null;
+  const envRibbonR = envelope ? envelope.querySelector('.envelope-ribbon-r') : null;
+  const envParts = [envBody, envFlap, envLabel, envRibbonL, envRibbonR];
 
   let envelopeOpened = false;
   let scrollDriven = false;
@@ -47,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Phase 2: Envelope fades away slowly
     setTimeout(() => {
-      [envBody, envFlap, envLabel].forEach(el => {
+      envParts.forEach(el => {
         if (el) {
           el.style.transition = 'opacity 1.4s ease';
           el.style.opacity = '0';
@@ -72,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
       seal.style.transform = 'translate(-50%, -50%) translateY(-140px) scale(0.9)';
       seal.style.opacity = '0';
     }
-    [envBody, envFlap, envLabel].forEach(el => {
+    envParts.forEach(el => {
       if (el) {
         el.style.transition = 'none';
         el.style.opacity = '0';
@@ -116,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Envelope (body + flap + label): p 0.10→0.45 — fades away
-    [envBody, envFlap, envLabel].forEach(el => {
+    envParts.forEach(el => {
       if (!el) return;
       if (p < 0.10) {
         el.style.opacity = '1';
