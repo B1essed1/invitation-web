@@ -4,129 +4,143 @@ document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ============================
-  // ENVELOPE SCROLL ANIMATION
+  // ENVELOPE: TAP-TO-OPEN + SCROLL REVERSE
   // ============================
   const envelopeSection = document.getElementById('envelope-section');
   const envelope = document.getElementById('envelope');
-  const flap = document.getElementById('envelope-flap');
   const seal = document.getElementById('wax-seal');
   const card = document.getElementById('invitation-card');
   const scrollHint = document.getElementById('scroll-hint');
   const nav = document.getElementById('nav');
+  const openPrompt = document.getElementById('open-prompt');
+  const envBody = envelope ? envelope.querySelector('.envelope-body') : null;
 
-  let sealBroken = false;
+  let envelopeOpened = false;
+  let scrollDriven = false;
+  document.body.classList.add('no-scroll');
 
-  function getEnvelopeProgress() {
-    if (!envelopeSection) return 1;
+  function openEnvelope() {
+    if (envelopeOpened) return;
+    envelopeOpened = true;
+
+    if (openPrompt) {
+      openPrompt.style.opacity = '0';
+      openPrompt.style.pointerEvents = 'none';
+    }
+
+    if (prefersReducedMotion) {
+      if (card) card.classList.add('visible');
+      if (envBody) envBody.style.opacity = '0';
+      if (seal) seal.style.opacity = '0';
+      transitionToScrollDriven();
+      return;
+    }
+
+    // Phase 1: Seal lifts up off the envelope
+    if (seal) {
+      seal.style.transition = 'transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease 0.3s';
+      seal.style.transform = 'translate(-50%, -70%) translateY(-140px) scale(0.9)';
+      seal.style.opacity = '0';
+    }
+
+    // Phase 2: Envelope body fades away slowly
+    setTimeout(() => {
+      if (envBody) {
+        envBody.style.transition = 'opacity 1.4s ease';
+        envBody.style.opacity = '0';
+      }
+    }, 500);
+
+    // Phase 3: Content reveals (card was always behind)
+    setTimeout(() => {
+      if (card) card.classList.add('visible');
+    }, 1200);
+
+    // Phase 4: Switch to scroll-driven
+    setTimeout(transitionToScrollDriven, 3000);
+  }
+
+  function transitionToScrollDriven() {
+    scrollDriven = true;
+
+    if (seal) {
+      seal.style.transition = 'none';
+      seal.style.transform = 'translate(-50%, -70%) translateY(-140px) scale(0.9)';
+      seal.style.opacity = '0';
+    }
+    if (envBody) {
+      envBody.style.transition = 'none';
+      envBody.style.opacity = '0';
+    }
+    if (card) card.classList.add('visible');
+
+    document.body.classList.remove('no-scroll');
+    requestAnimationFrame(() => {
+      if (envelopeSection) {
+        const totalScroll = envelopeSection.offsetHeight - window.innerHeight;
+        window.scrollTo(0, Math.floor(totalScroll * 0.92));
+      }
+      requestAnimationFrame(() => {
+        if (seal) seal.style.transition = 'none';
+        if (envBody) envBody.style.transition = 'none';
+        updateEnvelopeScroll();
+      });
+    });
+  }
+
+  function updateEnvelopeScroll() {
+    if (!scrollDriven || !envelopeSection) return;
+
     const rect = envelopeSection.getBoundingClientRect();
     const totalScroll = envelopeSection.offsetHeight - window.innerHeight;
     const scrolled = -rect.top;
-    return Math.min(Math.max(scrolled / totalScroll, 0), 1);
-  }
+    const p = Math.min(Math.max(scrolled / totalScroll, 0), 1);
 
-  function updateEnvelope() {
-    const p = getEnvelopeProgress();
+    // Seal: p 0→0.20 — lifts up and fades
+    if (seal) {
+      if (p < 0.20) {
+        const e = p / 0.20;
+        seal.style.transform = `translate(-50%, -70%) translateY(-${e * 140}px) scale(${1 - e * 0.1})`;
+        seal.style.opacity = String(1 - e);
+      } else {
+        seal.style.transform = 'translate(-50%, -70%) translateY(-140px) scale(0.9)';
+        seal.style.opacity = '0';
+      }
+    }
 
-    // Hide scroll hint after slight scroll
+    // Envelope body: p 0.10→0.45 — fades away
+    if (envBody) {
+      if (p < 0.10) {
+        envBody.style.opacity = '1';
+      } else if (p < 0.45) {
+        envBody.style.opacity = String(1 - (p - 0.10) / 0.35);
+      } else {
+        envBody.style.opacity = '0';
+      }
+    }
+
+    // Card content stagger: p 0.30+
+    if (card) {
+      if (p > 0.30) {
+        card.classList.add('visible');
+      } else {
+        card.classList.remove('visible');
+      }
+    }
+
+    // Nav + scroll hint: p 0.80+
     if (scrollHint) {
-      scrollHint.style.opacity = p < 0.05 ? 1 : 0;
-      scrollHint.style.pointerEvents = p < 0.05 ? 'auto' : 'none';
+      scrollHint.style.opacity = p > 0.80 ? '1' : '0';
+      scrollHint.style.pointerEvents = p > 0.80 ? 'auto' : 'none';
     }
-
-    // Show nav after envelope opens
     if (nav) {
-      nav.style.opacity = p > 0.85 ? 1 : 0;
-      nav.style.pointerEvents = p > 0.85 ? 'auto' : 'none';
-    }
-
-    if (!envelope) return;
-
-    // Phase 1: 0-0.15 — Seal cracks and breaks
-    if (p < 0.15) {
-      const sealP = p / 0.15;
-      if (seal) {
-        seal.style.opacity = 1;
-        const shake = Math.sin(sealP * Math.PI * 4) * sealP * 3;
-        seal.style.transform = `translate(-50%, -50%) rotate(${shake}deg)`;
-        if (sealP > 0.7 && !sealBroken) {
-          sealBroken = true;
-          seal.classList.add('cracking');
-        }
-      }
-      if (flap) {
-        flap.style.transform = 'rotateX(0deg)';
-      }
-      if (card) {
-        card.style.transform = 'translateY(0)';
-      }
-    }
-    // Phase 2: 0.15-0.25 — Seal fades away
-    else if (p < 0.25) {
-      const fadeP = (p - 0.15) / 0.1;
-      if (seal) {
-        seal.style.opacity = 1 - fadeP;
-        const scale = 1 + fadeP * 0.3;
-        seal.style.transform = `translate(-50%, -50%) scale(${scale})`;
-      }
-      if (flap) {
-        flap.style.transform = 'rotateX(0deg)';
-      }
-      if (card) {
-        card.style.transform = 'translateY(0)';
-      }
-    }
-    // Phase 3: 0.25-0.50 — Flap opens
-    else if (p < 0.50) {
-      const flapP = (p - 0.25) / 0.25;
-      if (seal) {
-        seal.style.opacity = 0;
-      }
-      if (flap) {
-        const angle = flapP * 180;
-        flap.style.transform = `rotateX(${angle}deg)`;
-        // Fade flap as it goes past 90deg (behind)
-        if (angle > 90) {
-          flap.style.opacity = 1 - ((angle - 90) / 90) * 0.5;
-        } else {
-          flap.style.opacity = 1;
-        }
-      }
-      if (card) {
-        card.style.transform = 'translateY(0)';
-      }
-    }
-    // Phase 4: 0.50-0.95 — Card slides out
-    else if (p < 0.95) {
-      const cardP = (p - 0.50) / 0.45;
-      // Eased card movement
-      const eased = 1 - Math.pow(1 - cardP, 3);
-      const envelopeH = envelope.offsetHeight || 280;
-      const slideDistance = envelopeH * 1.15;
-
-      if (seal) seal.style.opacity = 0;
-      if (flap) {
-        flap.style.transform = 'rotateX(180deg)';
-        flap.style.opacity = 0.5;
-      }
-      if (card) {
-        card.style.transform = `translateY(-${eased * slideDistance}px)`;
-        card.style.boxShadow = `0 ${4 + eased * 20}px ${15 + eased * 40}px rgba(0,0,0,${0.05 + eased * 0.1})`;
-      }
-    }
-    // Phase 5: 0.95-1.0 — Fully out
-    else {
-      if (seal) seal.style.opacity = 0;
-      if (flap) {
-        flap.style.transform = 'rotateX(180deg)';
-        flap.style.opacity = 0.5;
-      }
-      if (card) {
-        const envelopeH = envelope.offsetHeight || 280;
-        card.style.transform = `translateY(-${envelopeH * 1.15}px)`;
-        card.style.boxShadow = '0 24px 55px rgba(0,0,0,0.15)';
-      }
+      nav.style.opacity = p > 0.80 ? '1' : '0';
+      nav.style.pointerEvents = p > 0.80 ? 'auto' : 'none';
     }
   }
+
+  if (envelope) envelope.addEventListener('click', openEnvelope);
+  if (openPrompt) openPrompt.addEventListener('click', openEnvelope);
 
   // ============================
   // NAVIGATION
@@ -145,8 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function onScroll() {
     if (!ticking) {
       requestAnimationFrame(() => {
-        updateEnvelope();
         handleNavScroll();
+        updateEnvelopeScroll();
         ticking = false;
       });
       ticking = true;
@@ -154,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  updateEnvelope();
 
   // ============================
   // INTERSECTION OBSERVER ANIMATIONS
