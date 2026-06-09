@@ -258,16 +258,16 @@ body {
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1.2rem 3rem;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav.scrolled {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 30px rgba(0, 0, 0, 0.06);
+  background: rgba(251, 251, 253, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
   padding: 0.7rem 3rem;
 }
 
@@ -277,13 +277,10 @@ body {
 
 .nav-monogram {
   font-family: var(--font-script);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: var(--color-primary);
   transition: transform 0.3s ease;
-}
-
-.nav-monogram:hover {
-  transform: scale(1.1);
+  letter-spacing: 2px;
 }
 
 .nav-toggle-checkbox { display: none; }
