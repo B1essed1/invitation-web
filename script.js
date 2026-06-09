@@ -172,6 +172,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================
+  // WEDDING RINGS ANIMATION
+  // ============================
+  if (!prefersReducedMotion) {
+    const ringsDividers = document.querySelectorAll('.rings-divider');
+    const ringsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          entry.target.querySelector('.rings-container').classList.add('visible');
+          ringsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    ringsDividers.forEach(el => ringsObserver.observe(el));
+  } else {
+    document.querySelectorAll('.rings-divider').forEach(el => {
+      el.classList.add('visible');
+      el.querySelector('.rings-container').classList.add('visible');
+    });
+  }
+
+  // ============================
   // STAGGERED SECTION REVEALS
   // ============================
   if (!prefersReducedMotion) {
@@ -462,7 +485,7 @@ document.addEventListener('DOMContentLoaded', () => {
       className: 'custom-marker',
       html: `<div style="
         width: 36px; height: 36px;
-        background: #c9a87c;
+        background: #d4a853;
         border: 3px solid #fff;
         border-radius: 50% 50% 50% 0;
         transform: rotate(-45deg);

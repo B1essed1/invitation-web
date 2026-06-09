@@ -1,16 +1,17 @@
 :root {
-  --color-primary: #c9a87c;
-  --color-secondary: #d4b896;
-  --color-accent: #8b6f47;
+  --color-primary: #d4a853;
+  --color-secondary: #e8c97a;
+  --color-accent: #b8860b;
   --color-bg: #ffffff;
-  --color-bg-alt: #fafafa;
+  --color-bg-alt: #fffef9;
   --color-text: #2c2c2c;
-  --color-text-light: #777777;
+  --color-text-light: #888888;
   --color-overlay: rgba(255, 255, 255, 0.85);
   --color-white: #ffffff;
   --color-card: #ffffff;
-  --color-gold-gradient: linear-gradient(135deg, #c9a87c, #e8d5b7, #c9a87c);
-  --color-border: rgba(201, 168, 124, 0.2);
+  --color-gold-gradient: linear-gradient(135deg, #d4a853, #f0d78c, #d4a853);
+  --color-border: rgba(212, 168, 83, 0.2);
+  --color-gold-shine: linear-gradient(135deg, #b8860b, #d4a853, #f0d78c, #d4a853, #b8860b);
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-script: 'Great Vibes', cursive;
@@ -499,8 +500,9 @@ body {
 .hero-name {
   font-family: var(--font-script);
   font-size: clamp(2.8rem, 7vw, 5rem);
-  color: var(--color-text);
+  color: var(--color-accent);
   line-height: 1.2;
+  text-shadow: 0 2px 20px rgba(212, 168, 83, 0.15);
 }
 
 .hero-ampersand {
@@ -554,7 +556,7 @@ body {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 4vw, 2.8rem);
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--color-accent);
   letter-spacing: 2px;
 }
 
@@ -644,6 +646,160 @@ body {
 .hero-sparkle:nth-child(4) { bottom: 20%; right: 25%; animation-delay: 0.5s; }
 .hero-sparkle:nth-child(5) { top: 40%; left: 8%; animation-delay: 1.5s; }
 .hero-sparkle:nth-child(6) { top: 60%; right: 10%; animation-delay: 2.5s; }
+
+/* ============================
+   WEDDING RINGS DIVIDER
+   ============================ */
+
+.rings-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.rings-container {
+  position: relative;
+  width: 120px;
+  height: 70px;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.8s ease, transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.rings-container.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ring {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border: 3px solid var(--color-primary);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ring::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 168, 83, 0.2);
+}
+
+.ring-left {
+  left: 12px;
+  animation: none;
+  transition: transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.5s ease;
+  background: radial-gradient(ellipse at 30% 30%, rgba(240, 215, 140, 0.15), transparent 60%);
+}
+
+.ring-right {
+  right: 12px;
+  animation: none;
+  transition: transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s, border-color 0.5s ease;
+  background: radial-gradient(ellipse at 30% 30%, rgba(240, 215, 140, 0.15), transparent 60%);
+}
+
+.rings-container.visible .ring-left {
+  animation: ringSlideLeft 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.rings-container.visible .ring-right {
+  animation: ringSlideRight 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.rings-container.visible .ring {
+  box-shadow: 0 0 15px rgba(212, 168, 83, 0.2), inset 0 0 10px rgba(212, 168, 83, 0.05);
+}
+
+.ring-shine {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--color-secondary);
+  border-radius: 50%;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.5s ease 1.2s;
+}
+
+.rings-container.visible .ring-shine {
+  opacity: 0.8;
+  animation: ringSparkle 2s ease-in-out infinite 1.5s;
+}
+
+.rings-line-left,
+.rings-line-right {
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(to var(--dir), var(--color-primary), transparent);
+  width: 0;
+  transition: width 0.8s ease 0.6s;
+}
+
+.rings-line-left {
+  --dir: right;
+  right: calc(50% + 65px);
+  transform: translateY(-50%);
+}
+
+.rings-line-right {
+  --dir: left;
+  left: calc(50% + 65px);
+  transform: translateY(-50%);
+}
+
+.rings-divider.visible .rings-line-left,
+.rings-divider.visible .rings-line-right {
+  width: min(25vw, 200px);
+}
+
+@keyframes ringSlideLeft {
+  0%   { transform: translateY(-50%) translateX(-30px) rotate(-30deg); opacity: 0; }
+  60%  { transform: translateY(-50%) translateX(4px) rotate(5deg); opacity: 1; }
+  100% { transform: translateY(-50%) translateX(0) rotate(0deg); opacity: 1; }
+}
+
+@keyframes ringSlideRight {
+  0%   { transform: translateY(-50%) translateX(30px) rotate(30deg); opacity: 0; }
+  60%  { transform: translateY(-50%) translateX(-4px) rotate(-5deg); opacity: 1; }
+  100% { transform: translateY(-50%) translateX(0) rotate(0deg); opacity: 1; }
+}
+
+@keyframes ringSparkle {
+  0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(0.8); }
+  50%      { opacity: 1; transform: translateX(-50%) scale(1.2); }
+}
+
+@keyframes ringGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(212, 168, 83, 0.2), inset 0 0 10px rgba(212, 168, 83, 0.05); }
+  50%      { box-shadow: 0 0 25px rgba(212, 168, 83, 0.35), inset 0 0 15px rgba(212, 168, 83, 0.1); }
+}
+
+.rings-container.visible .ring {
+  animation-fill-mode: forwards;
+}
+
+.rings-container.visible .ring-left {
+  animation: ringSlideLeft 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, ringGlow 3s ease-in-out infinite 1.5s;
+}
+
+.rings-container.visible .ring-right {
+  animation: ringSlideRight 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, ringGlow 3s ease-in-out infinite 2s;
+}
 
 /* ============================
    SECTION COMMON STYLES
@@ -800,7 +956,7 @@ section {
   font-family: var(--font-display);
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-accent);
   margin-bottom: 0.3rem;
 }
 
@@ -866,7 +1022,7 @@ section {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  color: var(--color-accent);
+  color: var(--color-primary);
   line-height: 1;
 }
 
