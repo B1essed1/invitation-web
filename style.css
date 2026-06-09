@@ -150,7 +150,7 @@ body.no-scroll {
   text-shadow: 0 1px 2px rgba(255,255,255,0.4);
 }
 
-/* ---- Wax seal (large, centered, lifts up on open) ---- */
+/* ---- Wax seal (real image, centered, lifts up on open) ---- */
 .wax-seal {
   position: absolute;
   top: 42%;
@@ -159,63 +159,14 @@ body.no-scroll {
   z-index: 8;
 }
 
-.wax-seal-inner {
-  width: 115px;
-  height: 115px;
-  background:
-    radial-gradient(circle at 32% 28%, rgba(255,230,215,0.45) 0%, transparent 35%),
-    radial-gradient(circle at 68% 72%, rgba(140,95,75,0.3) 0%, transparent 35%),
-    radial-gradient(circle at 50% 50%, #dbb5a0 0%, #d0a590 25%, #c49580 45%, #b88570 60%, #a87565 80%, #9a6858 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  box-shadow:
-    0 6px 20px rgba(0,0,0,0.18),
-    0 12px 35px rgba(160,120,100,0.15),
-    inset 0 2px 6px rgba(255,255,255,0.35),
-    inset 0 -3px 8px rgba(0,0,0,0.18);
+.wax-seal img {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.18)) drop-shadow(0 3px 8px rgba(0,0,0,0.12));
+  user-select: none;
+  pointer-events: none;
 }
-
-.wax-seal-inner::before {
-  content: '';
-  position: absolute;
-  inset: 10px;
-  border: 2px solid rgba(190,155,135,0.35);
-  border-radius: 50%;
-  box-shadow: 0 1px 0 rgba(255,255,255,0.25), inset 0 1px 0 rgba(0,0,0,0.08);
-}
-
-.wax-seal-inner::after {
-  content: '';
-  position: absolute;
-  top: 10px;
-  left: 16px;
-  width: 30px;
-  height: 18px;
-  background: rgba(255,255,255,0.12);
-  border-radius: 50%;
-  transform: rotate(-30deg);
-}
-
-.wax-seal-inner span {
-  font-family: var(--font-script);
-  font-size: 2rem;
-  color: rgba(175,135,115,0.65);
-  text-shadow: 0 1px 0 rgba(255,255,255,0.35), 0 -1px 1px rgba(0,0,0,0.12);
-  position: relative;
-  z-index: 1;
-}
-
-.wax-drip {
-  position: absolute;
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-}
-
-.wax-drip-1 { width: 16px; height: 20px; bottom: -12px; left: 22px; transform: rotate(-18deg); background: radial-gradient(ellipse at 40% 30%, #c49a88, #a87868); }
-.wax-drip-2 { width: 12px; height: 16px; bottom: -10px; right: 24px; transform: rotate(12deg); background: radial-gradient(ellipse at 40% 30%, #c49a88, #a87868); }
-.wax-drip-3 { width: 10px; height: 14px; top: -6px; right: 16px; transform: rotate(22deg); background: radial-gradient(ellipse at 40% 30%, #c49a88, #a87868); }
 
 /* ---- Tap prompt ---- */
 .open-prompt {
