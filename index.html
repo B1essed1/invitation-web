@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-brand">
+      <span class="nav-monogram">Sh & R</span>
+    </div>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+    <label for="nav-toggle" class="nav-toggle-label">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <ul class="nav-links">
+      <li><a href="#details">Tafsilotlar</a></li>
+      <li><a href="#location">Manzil</a></li>
+      <li><a href="#rsvp">Tasdiqlash</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-morph-bg hero-morph-bg-1"></div>
+    <div class="hero-morph-bg hero-morph-bg-2"></div>
+    <div class="hero-sparkle"></div>
+    <div class="hero-sparkle"></div>
+    <div class="hero-sparkle"></div>
+    <div class="hero-sparkle"></div>
+    <div class="hero-sparkle"></div>
+    <div class="hero-sparkle"></div>
+    <div class="hero-content">
+      <!-- Bismillah -->
+      <p class="hero-bismillah" data-animate="fadeInDown" data-delay="0">&#1576;&#1616;&#1587;&#1618;&#1605;&#1616; &#1575;&#1604;&#1604;&#1617;&#1607;&#1616; &#1575;&#1604;&#1585;&#1617;&#1614;&#1581;&#1618;&#1605;&#1648;&#1606;&#1616; &#1575;&#1604;&#1585;&#1617;&#1614;&#1581;&#1616;&#1610;&#1605;&#1616;</p>
+
+      <!-- Ornamental divider -->
+      <div class="hero-ornament" data-animate="scaleIn" data-delay="0.4">
+        <svg width="60" height="20" viewBox="0 0 60 20">
+          <path d="M0,10 Q15,0 30,10 Q45,20 60,10" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <circle cx="30" cy="10" r="2" fill="currentColor" opacity="0.3"/>
+        </svg>
+      </div>
+
+      <!-- Quran verse -->
+      <p class="hero-verse" data-animate="fadeInUp" data-delay="0.6">&laquo;Alloh ularning qalbini sevgi ila birlashtirdi&raquo;</p>
+      <p class="hero-verse-ref" data-animate="fadeInUp" data-delay="0.8">(Anfol surasi, 63-oyat)</p>
+
+      <!-- Invitation text -->
+      <p class="hero-invitation-text" data-animate="slideInBlur" data-delay="1.0">Hurmatli aziz mehmonimiz, Sizni hayotimizning eng go'zal va baxtli onlarida biz bilan bo'lishingiz istagida nikoh shodiyonamizga taklif qilamiz.</p>
+
+      <!-- Couple names -->
+      <h1 class="hero-names">
+        <span class="hero-name" data-animate="revealText" data-delay="1.4">Shohdiyor</span>
+        <span class="hero-ampersand" data-animate="scaleInRotate" data-delay="1.8">&</span>
+        <span class="hero-name" data-animate="revealText" data-delay="2.0">Ruxshona</span>
+      </h1>
+
+      <!-- Ornamental divider with ornament -->
+      <div class="hero-divider" data-animate="scaleIn" data-delay="2.4">
+        <svg width="220" height="24" viewBox="0 0 220 24">
+          <line x1="0" y1="12" x2="85" y2="12" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          <path d="M95,6 Q100,2 105,6 Q110,12 105,18 Q100,22 95,18 Q90,12 95,6Z" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          <circle cx="100" cy="12" r="2" fill="currentColor" opacity="0.4"/>
+          <path d="M100,2 L102,8 L100,6 L98,8Z" fill="currentColor" opacity="0.3"/>
+          <path d="M100,22 L102,16 L100,18 L98,16Z" fill="currentColor" opacity="0.3"/>
+          <line x1="115" y1="12" x2="220" y2="12" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+        </svg>
+      </div>
+
+      <!-- Family names -->
+      <div class="hero-families" data-animate="fadeInUp" data-delay="2.6">
+        <span class="hero-family-name">Mirzaxolovlar oilasi</span>
+        <span class="hero-family-heart">
+          <svg width="16" height="16" viewBox="0 0 16 16">
+            <path d="M8 4 C8 4, 5.5 0, 3 2.5 C0.5 5, 3 8, 8 13 C13 8, 15.5 5, 13 2.5 C10.5 0, 8 4, 8 4Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="hero-family-name">Bayzaqovlar oilasi</span>
+      </div>
+
+      <!-- Date -->
+      <div class="hero-date-block" data-animate="fadeInUp" data-delay="2.9">
+        <span class="hero-date-num">15</span>
+        <span class="hero-date-sep">|</span>
+        <span class="hero-date-num">09</span>
+        <span class="hero-date-sep">|</span>
+        <span class="hero-date-num">2026</span>
+      </div>
+      <p class="hero-time" data-animate="fadeInUp" data-delay="3.1">SOAT 15:00</p>
+
+      <!-- Venue -->
+      <div class="hero-venue-block" data-animate="slideInBlur" data-delay="3.3">
+        <div class="hero-venue-line"></div>
+        <p class="hero-venue-name">OSIYO TOYHONASI</p>
+        <p class="hero-venue-address">MO'LJAL KO'K TERAK GENERAL</p>
+      </div>
+    </div>
+
+    <div class="hero-scroll-indicator" data-animate="fadeInUp" data-delay="3.6">
+      <span>Pastga suring</span>
+      <div class="scroll-chevron">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Details Section -->
+  <section class="details" id="details">
+    <div class="floating-decor floating-decor-1" style="top:10%;left:5%;font-size:2rem;opacity:0.06">&#10047;</div>
+    <div class="floating-decor floating-decor-2" style="top:20%;right:8%;font-size:1.5rem;opacity:0.05">&#10053;</div>
+    <div class="floating-decor floating-decor-3" style="bottom:15%;left:8%;font-size:1.8rem;opacity:0.05">&#10048;</div>
+    <div class="floating-decor floating-decor-4" style="bottom:25%;right:5%;font-size:2.2rem;opacity:0.06">&#10047;</div>
+    <div class="section-header" data-animate="fadeInUp">
+      <h2 class="section-title">Tadbirkor Tafsilotlari</h2>
+      <p class="section-subtitle">Sizni kutib qolamiz</p>
+      <div class="section-divider">
+        <svg width="80" height="12" viewBox="0 0 80 12">
+          <line x1="0" y1="6" x2="35" y2="6" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <circle cx="40" cy="6" r="3" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <line x1="45" y1="6" x2="80" y2="6" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="details-cards">
+      <div class="detail-card" data-animate="fadeInUp" data-delay="0">
+        <div class="card-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="24" cy="24" r="20"/>
+            <path d="M24 12V24L32 28"/>
+          </svg>
+        </div>
+        <h3>Nikoh</h3>
+        <div class="card-divider"></div>
+        <p class="card-time">15:00</p>
+        <p class="card-venue">Osiyo Toyhonasi</p>
+        <p class="card-address">Ko'k Terak General</p>
+      </div>
+
+      <div class="detail-card" data-animate="fadeInUp" data-delay="0.2">
+        <div class="card-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M8 36 L24 8 L40 36Z"/>
+            <circle cx="24" cy="28" r="4"/>
+            <line x1="24" y1="18" x2="24" y2="22"/>
+          </svg>
+        </div>
+        <h3>Bazm</h3>
+        <div class="card-divider"></div>
+        <p class="card-time">17:00</p>
+        <p class="card-venue">Osiyo Toyhonasi</p>
+        <p class="card-address">Kechki ziyofat va bayram</p>
+        <p class="card-note">Kiyim kodi: Rasmiy</p>
+      </div>
+
+      <div class="detail-card" data-animate="fadeInUp" data-delay="0.4">
+        <div class="card-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M14 18 C14 18, 10 10, 6 14 C2 18, 6 24, 14 32"/>
+            <path d="M14 18 C14 18, 18 10, 22 14 C26 18, 22 24, 14 32"/>
+            <path d="M34 18 C34 18, 30 10, 26 14 C22 18, 26 24, 34 32"/>
+            <path d="M34 18 C34 18, 38 10, 42 14 C46 18, 42 24, 34 32"/>
+          </svg>
+        </div>
+        <h3>Davomi</h3>
+        <div class="card-divider"></div>
+        <p class="card-time">21:00</p>
+        <p class="card-venue">Osiyo Toyhonasi</p>
+        <p class="card-address">Musiqa, Shodlik va Xotiralar</p>
+      </div>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="countdown" data-animate="fadeInUp" data-delay="0.3">
+      <h3 class="countdown-title">Abadiylikkacha qolgan vaqt</h3>
+      <div class="countdown-timer" id="countdown">
+        <div class="countdown-block">
+          <span class="countdown-number" id="countdown-days">000</span>
+          <span class="countdown-label">Kun</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-block">
+          <span class="countdown-number" id="countdown-hours">00</span>
+          <span class="countdown-label">Soat</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-block">
+          <span class="countdown-number" id="countdown-minutes">00</span>
+          <span class="countdown-label">Daqiqa</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-block">
+          <span class="countdown-number" id="countdown-seconds">00</span>
+          <span class="countdown-label">Soniya</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map / Location Section -->
+  <section class="location" id="location">
+    <div class="floating-decor floating-decor-2" style="top:8%;right:6%;font-size:1.8rem;opacity:0.05">&#10053;</div>
+    <div class="floating-decor floating-decor-3" style="bottom:10%;left:4%;font-size:2rem;opacity:0.05">&#10048;</div>
+    <div class="section-header" data-animate="fadeInUp">
+      <h2 class="section-title">Manzil</h2>
+      <p class="section-subtitle">Biz sizni ushbu go'zal joyda kutmoqdamiz</p>
+      <div class="section-divider">
+        <svg width="80" height="12" viewBox="0 0 80 12">
+          <line x1="0" y1="6" x2="35" y2="6" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <circle cx="40" cy="6" r="3" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <line x1="45" y1="6" x2="80" y2="6" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="map-wrapper" data-animate="fadeInUp" data-delay="0.2">
+      <div id="map" data-lat="41.3111" data-lng="69.2797" data-zoom="15"></div>
+    </div>
+
+    <div class="location-info" data-animate="fadeInUp" data-delay="0.4">
+      <div class="location-detail">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        <div>
+          <h4>Osiyo Toyhonasi</h4>
+          <p>Mo'ljal Ko'k Terak General, Toshkent</p>
+        </div>
+      </div>
+      <a href="https://www.google.com/maps/dir//41.3111,69.2797" target="_blank" rel="noopener" class="directions-btn">
+        Yo'nalish olish
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- RSVP Section -->
+  <section class="rsvp" id="rsvp">
+    <div class="rsvp-bg-pattern"></div>
+    <div class="section-header" data-animate="fadeInUp">
+      <h2 class="section-title-script">Tasdiqlash</h2>
+      <p class="section-subtitle">Iltimos, 2026-yil 15-avgustgacha javob bering</p>
+      <div class="section-divider">
+        <svg width="80" height="12" viewBox="0 0 80 12">
+          <line x1="0" y1="6" x2="35" y2="6" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <circle cx="40" cy="6" r="3" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <line x1="45" y1="6" x2="80" y2="6" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+
+    <form class="rsvp-form" id="rsvp-form" data-animate="fadeInUp" data-delay="0.2">
+      <div class="form-row">
+        <div class="form-group">
+          <input type="text" id="guest-name" name="name" placeholder=" " required>
+          <label for="guest-name">To'liq ism</label>
+        </div>
+        <div class="form-group">
+          <input type="email" id="guest-email" name="email" placeholder=" " required>
+          <label for="guest-email">Elektron pochta</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <input type="number" id="guest-count" name="guests" min="1" max="5" value="1" placeholder=" ">
+          <label for="guest-count">Mehmonlar soni</label>
+        </div>
+      </div>
+
+      <div class="form-group-radio">
+        <p class="radio-label">Qatnashasizmi?</p>
+        <div class="radio-options">
+          <label class="radio-option">
+            <input type="radio" name="attendance" value="accept" required>
+            <span class="radio-custom"></span>
+            <span class="radio-text">Xursandlik bilan qabul qilaman</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="attendance" value="decline">
+            <span class="radio-custom"></span>
+            <span class="radio-text">Afsuski kela olmayman</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <textarea id="guest-dietary" name="dietary" placeholder=" " rows="2"></textarea>
+        <label for="guest-dietary">Ovqatlanish cheklovlari (ixtiyoriy)</label>
+      </div>
+
+      <div class="form-group">
+        <textarea id="guest-message" name="message" placeholder=" " rows="3"></textarea>
+        <label for="guest-message">Kelin-kuyovga xabar (ixtiyoriy)</label>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        <span class="btn-text">Javob yuborish</span>
+        <span class="btn-shimmer"></span>
+      </button>
+    </form>
+
+    <div class="rsvp-success" id="rsvp-success" style="display:none;">
+      <div class="success-heart">
+        <svg width="60" height="60" viewBox="0 0 60 60">
+          <path d="M30 15 C30 15, 20 0, 10 10 C0 20, 10 35, 30 52 C50 35, 60 20, 50 10 C40 0, 30 15, 30 15Z" fill="var(--color-primary)"/>
+        </svg>
+      </div>
+      <h3>Rahmat!</h3>
+      <p>Javobingiz qabul qilindi. Siz bilan birga nishonlashni intiqlik bilan kutmoqdamiz!</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="footer-content" data-animate="fadeInUp">
+      <div class="footer-monogram">Sh & R</div>
+      <p class="footer-hashtag">#ShohdiyorVaRuxshona</p>
+      <div class="footer-divider">
+        <svg width="200" height="20" viewBox="0 0 200 20">
+          <path d="M0,10 Q50,0 100,10 Q150,20 200,10" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+        </svg>
+      </div>
+      <p class="footer-made">Sevgi bilan yaratilgan</p>
+      <p class="footer-date">15 Sentyabr, 2026 &middot; Toshkent</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
