@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.getElementById('nav');
   const openPrompt = document.getElementById('open-prompt');
   const envBody = envelope ? envelope.querySelector('.envelope-body') : null;
+  const envFlap = envelope ? envelope.querySelector('.envelope-flap-deco') : null;
+  const envLabel = envelope ? envelope.querySelector('.envelope-label') : null;
 
   let envelopeOpened = false;
   let scrollDriven = false;
@@ -39,16 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Phase 1: Seal lifts up off the envelope
     if (seal) {
       seal.style.transition = 'transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease 0.3s';
-      seal.style.transform = 'translate(-50%, -70%) translateY(-140px) scale(0.9)';
+      seal.style.transform = 'translate(-50%, -50%) translateY(-140px) scale(0.9)';
       seal.style.opacity = '0';
     }
 
-    // Phase 2: Envelope body fades away slowly
+    // Phase 2: Envelope fades away slowly
     setTimeout(() => {
-      if (envBody) {
-        envBody.style.transition = 'opacity 1.4s ease';
-        envBody.style.opacity = '0';
-      }
+      [envBody, envFlap, envLabel].forEach(el => {
+        if (el) {
+          el.style.transition = 'opacity 1.4s ease';
+          el.style.opacity = '0';
+        }
+      });
     }, 500);
 
     // Phase 3: Content reveals (card was always behind)
@@ -65,13 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (seal) {
       seal.style.transition = 'none';
-      seal.style.transform = 'translate(-50%, -70%) translateY(-140px) scale(0.9)';
+      seal.style.transform = 'translate(-50%, -50%) translateY(-140px) scale(0.9)';
       seal.style.opacity = '0';
     }
-    if (envBody) {
-      envBody.style.transition = 'none';
-      envBody.style.opacity = '0';
-    }
+    [envBody, envFlap, envLabel].forEach(el => {
+      if (el) {
+        el.style.transition = 'none';
+        el.style.opacity = '0';
+      }
+    });
     if (card) card.classList.add('visible');
 
     document.body.classList.remove('no-scroll');
@@ -81,8 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo(0, Math.floor(totalScroll * 0.92));
       }
       requestAnimationFrame(() => {
-        if (seal) seal.style.transition = 'none';
-        if (envBody) envBody.style.transition = 'none';
+        [seal, envBody, envFlap, envLabel].forEach(el => {
+          if (el) el.style.transition = 'none';
+        });
         updateEnvelopeScroll();
       });
     });
@@ -100,24 +107,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (seal) {
       if (p < 0.20) {
         const e = p / 0.20;
-        seal.style.transform = `translate(-50%, -70%) translateY(-${e * 140}px) scale(${1 - e * 0.1})`;
+        seal.style.transform = `translate(-50%, -50%) translateY(-${e * 140}px) scale(${1 - e * 0.1})`;
         seal.style.opacity = String(1 - e);
       } else {
-        seal.style.transform = 'translate(-50%, -70%) translateY(-140px) scale(0.9)';
+        seal.style.transform = 'translate(-50%, -50%) translateY(-140px) scale(0.9)';
         seal.style.opacity = '0';
       }
     }
 
-    // Envelope body: p 0.10→0.45 — fades away
-    if (envBody) {
+    // Envelope (body + flap + label): p 0.10→0.45 — fades away
+    [envBody, envFlap, envLabel].forEach(el => {
+      if (!el) return;
       if (p < 0.10) {
-        envBody.style.opacity = '1';
+        el.style.opacity = '1';
       } else if (p < 0.45) {
-        envBody.style.opacity = String(1 - (p - 0.10) / 0.35);
+        el.style.opacity = String(1 - (p - 0.10) / 0.35);
       } else {
-        envBody.style.opacity = '0';
+        el.style.opacity = '0';
       }
-    }
+    });
 
     // Card content stagger: p 0.30+
     if (card) {

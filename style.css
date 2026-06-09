@@ -20,7 +20,7 @@
   --envelope-color: #8B9E7E;
   --envelope-color-dark: #7A8D6E;
   --envelope-color-light: #99AC8C;
-  --botanical-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.12)' stroke-width='0.8'%3E%3Cpath d='M30,20 Q50,0 70,20 Q50,40 30,20Z'/%3E%3Cline x1='50' y1='5' x2='50' y2='35'/%3E%3Cpath d='M42,15 L50,20'/%3E%3Cpath d='M58,15 L50,20'/%3E%3Cpath d='M44,25 L50,20'/%3E%3Cpath d='M56,25 L50,20'/%3E%3Ccircle cx='110' cy='40' r='12'/%3E%3Cpath d='M110,28 Q118,22 116,32'/%3E%3Cpath d='M110,28 Q102,22 104,32'/%3E%3Cpath d='M98,40 Q92,36 96,46'/%3E%3Cpath d='M122,40 Q128,36 124,46'/%3E%3Cpath d='M110,52 Q106,58 112,56'/%3E%3Cpath d='M20,90 Q40,70 60,90 Q40,110 20,90Z'/%3E%3Cline x1='40' y1='75' x2='40' y2='105'/%3E%3Cpath d='M32,83 L40,90'/%3E%3Cpath d='M48,83 L40,90'/%3E%3Ccircle cx='100' cy='110' r='8'/%3E%3Ccircle cx='100' cy='110' r='4'/%3E%3Cpath d='M70,130 Q85,115 100,130 Q85,145 70,130Z'/%3E%3Cline x1='85' y1='118' x2='85' y2='142'/%3E%3Cpath d='M130,80 Q138,72 146,80 Q138,88 130,80Z'/%3E%3Cpath d='M10,140 Q18,132 26,140 Q18,148 10,140Z'/%3E%3Cpath d='M130,130 Q138,122 146,130 Q138,138 130,130Z'/%3E%3C/g%3E%3C/svg%3E");
+  --botanical-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.07)' stroke-width='0.7'%3E%3Ccircle cx='65' cy='55' r='24'/%3E%3Ccircle cx='65' cy='55' r='15'/%3E%3Ccircle cx='65' cy='55' r='7'/%3E%3Cpath d='M65,31 C74,24 78,34 72,40'/%3E%3Cpath d='M65,31 C56,24 52,34 58,40'/%3E%3Cpath d='M89,55 C96,46 88,42 82,48'/%3E%3Cpath d='M89,55 C96,64 88,68 82,62'/%3E%3Cpath d='M41,55 C34,46 42,42 48,48'/%3E%3Cpath d='M41,55 C34,64 42,68 48,62'/%3E%3Cpath d='M65,79 C74,86 78,76 72,70'/%3E%3Cpath d='M65,79 C56,86 52,76 58,70'/%3E%3Cpath d='M41,42 C25,32 15,48 30,54'/%3E%3Cpath d='M89,68 C105,78 115,62 100,56'/%3E%3Ccircle cx='155' cy='150' r='22'/%3E%3Ccircle cx='155' cy='150' r='13'/%3E%3Ccircle cx='155' cy='150' r='6'/%3E%3Cpath d='M155,128 C163,122 168,132 162,137'/%3E%3Cpath d='M155,128 C147,122 142,132 148,137'/%3E%3Cpath d='M177,150 C183,142 176,138 170,143'/%3E%3Cpath d='M133,150 C127,142 134,138 140,143'/%3E%3Cpath d='M155,172 C163,178 168,168 162,163'/%3E%3Cpath d='M155,172 C147,178 142,168 148,163'/%3E%3Cpath d='M133,140 C118,126 106,140 120,150'/%3E%3Cpath d='M15,145 Q32,128 50,145 Q32,162 15,145Z'/%3E%3Cline x1='32' y1='130' x2='32' y2='160'/%3E%3Cpath d='M23,138 L32,145'/%3E%3Cpath d='M41,138 L32,145'/%3E%3Cpath d='M125,15 Q142,0 160,15 Q142,32 125,15Z'/%3E%3Cline x1='142' y1='3' x2='142' y2='30'/%3E%3Cpath d='M133,9 L142,15'/%3E%3Cpath d='M151,9 L142,15'/%3E%3Cpath d='M5,8 Q18,-2 32,8 Q18,20 5,8Z'/%3E%3Cline x1='18' y1='0' x2='18' y2='18'/%3E%3Ccircle cx='108' cy='100' r='8'/%3E%3Ccircle cx='108' cy='100' r='4'/%3E%3Cpath d='M108,92 C113,88 116,93 112,96'/%3E%3Cpath d='M108,92 C103,88 100,93 104,96'/%3E%3Ccircle cx='28' cy='88' r='6'/%3E%3Ccircle cx='28' cy='88' r='3'/%3E%3Ccircle cx='180' cy='78' r='7'/%3E%3Ccircle cx='180' cy='78' r='3'/%3E%3Cpath d='M65,79 C60,98 75,108 108,100'/%3E%3Cpath d='M155,172 C150,188 135,192 120,186'/%3E%3Cpath d='M50,145 C62,158 82,164 105,158'/%3E%3Cpath d='M82,95 Q88,87 94,95 Q88,103 82,95Z'/%3E%3Cpath d='M138,182 Q144,174 150,182 Q144,190 138,182Z'/%3E%3Cpath d='M172,28 Q178,20 184,28 Q178,36 172,28Z'/%3E%3Cpath d='M2,172 Q8,164 14,172 Q8,180 2,172Z'/%3E%3Cpath d='M96,8 Q102,0 108,8 Q102,16 96,8Z'/%3E%3Cpath d='M185,120 Q192,112 200,120 Q192,128 185,120Z'/%3E%3Cpath d='M60,178 Q68,170 76,178 Q68,186 60,178Z'/%3E%3Cline x1='68' y1='172' x2='68' y2='184'/%3E%3C/g%3E%3C/svg%3E");
 
   --transition-smooth: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --transition-bounce: 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -51,121 +51,115 @@ body.no-scroll {
   box-sizing: border-box;
 }
 
-/* ---- Shared sizing ---- */
+/* ---- Full-screen layout ---- */
 .envelope,
 .invitation-card {
   position: absolute;
-  width: min(340px, 82vw);
-  height: min(460px, 115vw);
   inset: 0;
-  margin: auto;
+  width: 100%;
+  height: 100%;
 }
 
 /* ---- Invitation card (sits BEHIND — always there) ---- */
 .invitation-card {
   z-index: 1;
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
   overflow: hidden;
+  overflow-y: auto;
 }
 
-.invitation-card::before {
-  content: '';
-  position: absolute;
-  inset: 10px;
-  border: 1px solid rgba(212, 168, 83, 0.25);
-  border-radius: 4px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ---- Envelope (sits IN FRONT) ---- */
+/* ---- Envelope (sits IN FRONT — fills screen) ---- */
 .envelope {
   z-index: 5;
   cursor: pointer;
-  transform-style: preserve-3d;
 }
 
-/* Envelope body — the main face */
+/* Envelope body — full screen green with botanical pattern */
 .envelope-body {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, #95a786 0%, #8a9c7b 35%, #7e9070 65%, #748768 100%);
-  border-radius: 8px;
-  box-shadow:
-    0 20px 50px rgba(0,0,0,0.18),
-    0 6px 16px rgba(0,0,0,0.10),
-    inset 0 1px 0 rgba(255,255,255,0.12);
-  transition: opacity 1.4s ease, transform 1.4s ease;
+  background-color: #7c8e6e;
+  background-image: var(--botanical-pattern);
+  background-size: 200px 200px;
+  transition: opacity 1.4s ease;
 }
 
-.envelope-body::before {
+/* V-flap decoration at top */
+.envelope-flap-deco {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 28vh;
+  background-color: #6e8060;
+  background-image: var(--botanical-pattern);
+  background-size: 200px 200px;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  z-index: 1;
+}
+
+.envelope-flap-deco::after {
   content: '';
   position: absolute;
-  inset: 10px;
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 4px;
+  top: 4px;
+  left: 12%;
+  right: 12%;
+  bottom: 15%;
+  border: 1px solid rgba(255,255,255,0.08);
+  clip-path: polygon(0 0, 50% 90%, 100% 0);
   pointer-events: none;
 }
 
 /* Envelope label */
 .envelope-label {
   position: absolute;
-  bottom: 25%;
+  bottom: 18%;
   left: 0;
   right: 0;
   text-align: center;
   pointer-events: none;
-}
-
-.envelope-label-heart {
-  color: rgba(255,255,255,0.45);
-  margin-bottom: 0.5rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  z-index: 2;
 }
 
 .envelope-label p {
   font-family: var(--font-script);
-  font-size: clamp(1.5rem, 4.5vw, 2rem);
-  color: rgba(255,255,255,0.85);
-  text-shadow: 0 1px 6px rgba(0,0,0,0.12);
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  color: rgba(255,255,255,0.88);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-/* ---- Wax seal (centered on envelope, lifts up on open) ---- */
+/* ---- Wax seal (large, centered, lifts up on open) ---- */
 .wax-seal {
   position: absolute;
-  top: 50%;
+  top: 42%;
   left: 50%;
-  transform: translate(-50%, -70%);
-  z-index: 7;
+  transform: translate(-50%, -50%);
+  z-index: 8;
 }
 
 .wax-seal-inner {
-  width: 78px;
-  height: 78px;
+  width: 110px;
+  height: 110px;
   background:
-    radial-gradient(circle at 38% 32%, rgba(255,180,160,0.25) 0%, transparent 45%),
-    radial-gradient(circle at 62% 68%, rgba(60,15,8,0.3) 0%, transparent 45%),
-    radial-gradient(circle at 50% 50%, #c0392b 0%, #a93226 35%, #922b21 55%, #7b241c 75%, #641a14 100%);
+    radial-gradient(circle at 35% 30%, rgba(255,200,180,0.3) 0%, transparent 40%),
+    radial-gradient(circle at 65% 70%, rgba(40,10,5,0.35) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, #c0392b 0%, #ab332a 30%, #922b21 50%, #7b241c 70%, #5e1810 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   box-shadow:
-    0 5px 18px rgba(0,0,0,0.4),
-    0 10px 30px rgba(100,26,20,0.25),
-    inset 0 2px 5px rgba(255,255,255,0.18),
-    inset 0 -3px 8px rgba(0,0,0,0.3);
+    0 8px 25px rgba(0,0,0,0.45),
+    0 15px 40px rgba(100,26,20,0.3),
+    inset 0 3px 8px rgba(255,255,255,0.2),
+    inset 0 -4px 10px rgba(0,0,0,0.35);
 }
 
 .wax-seal-inner::before {
   content: '';
   position: absolute;
-  inset: 7px;
+  inset: 9px;
   border: 1.5px solid rgba(255,255,255,0.10);
   border-radius: 50%;
 }
@@ -173,33 +167,33 @@ body.no-scroll {
 .wax-seal-inner::after {
   content: '';
   position: absolute;
-  top: 8px;
-  left: 12px;
-  width: 18px;
-  height: 10px;
-  background: rgba(255,255,255,0.08);
+  top: 10px;
+  left: 14px;
+  width: 28px;
+  height: 16px;
+  background: rgba(255,255,255,0.10);
   border-radius: 50%;
-  transform: rotate(-25deg);
+  transform: rotate(-30deg);
 }
 
 .wax-seal-inner span {
   font-family: var(--font-script);
-  font-size: 1.4rem;
-  color: rgba(255,255,255,0.88);
-  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  font-size: 1.9rem;
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
   position: relative;
   z-index: 1;
 }
 
 .wax-drip {
   position: absolute;
-  background: radial-gradient(ellipse at 40% 30%, #b5342a, #8b2720);
+  background: radial-gradient(ellipse at 40% 30%, #b5342a, #7b2420);
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
 }
 
-.wax-drip-1 { width: 14px; height: 18px; bottom: -10px; left: 14px; transform: rotate(-18deg); }
-.wax-drip-2 { width: 10px; height: 14px; bottom: -8px; right: 18px; transform: rotate(12deg); }
-.wax-drip-3 { width: 9px; height: 12px; top: -5px; right: 10px; transform: rotate(22deg); }
+.wax-drip-1 { width: 18px; height: 22px; bottom: -14px; left: 20px; transform: rotate(-18deg); }
+.wax-drip-2 { width: 14px; height: 18px; bottom: -12px; right: 22px; transform: rotate(12deg); }
+.wax-drip-3 { width: 12px; height: 16px; top: -8px; right: 14px; transform: rotate(22deg); }
 
 /* ---- Tap prompt ---- */
 .open-prompt {
@@ -251,7 +245,15 @@ body.no-scroll {
   animation: bounceDown 2s ease-in-out infinite;
 }
 
-/* Invitation card — positioned in .envelope-wrapper CSS above */
+/* Invitation card — full screen behind envelope */
+.invitation-card::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(212, 168, 83, 0.2);
+  pointer-events: none;
+  z-index: 1;
+}
 
 .invitation-inner {
   padding: 2rem 1.5rem;
