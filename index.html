@@ -17,17 +17,6 @@
     <div class="nav-brand">
       <span class="nav-monogram">Sh & R</span>
     </div>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
-    <label for="nav-toggle" class="nav-toggle-label">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
-    <ul class="nav-links">
-      <li><a href="#details">Tafsilotlar</a></li>
-      <li><a href="#location">Manzil</a></li>
-      <li><a href="#rsvp">Tasdiqlash</a></li>
-    </ul>
   </nav>
 
   <!-- Hero Section -->
@@ -63,9 +52,9 @@
 
       <!-- Couple names -->
       <h1 class="hero-names">
-        <span class="hero-name" data-animate="revealText" data-delay="1.4">Shohdiyor</span>
+        <span class="hero-name" data-animate="fadeInUp" data-delay="1.4">Shohdiyor</span>
         <span class="hero-ampersand" data-animate="scaleInRotate" data-delay="1.8">&</span>
-        <span class="hero-name" data-animate="revealText" data-delay="2.0">Ruxshona</span>
+        <span class="hero-name" data-animate="fadeInUp" data-delay="2.0">Ruxshona</span>
       </h1>
 
       <!-- Ornamental divider with ornament -->
@@ -252,82 +241,6 @@
     </div>
   </section>
 
-  <!-- RSVP Section -->
-  <section class="rsvp" id="rsvp">
-    <div class="rsvp-bg-pattern"></div>
-    <div class="section-header" data-animate="fadeInUp">
-      <h2 class="section-title-script">Tasdiqlash</h2>
-      <p class="section-subtitle">Iltimos, 2026-yil 15-avgustgacha javob bering</p>
-      <div class="section-divider">
-        <svg width="80" height="12" viewBox="0 0 80 12">
-          <line x1="0" y1="6" x2="35" y2="6" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-          <circle cx="40" cy="6" r="3" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-          <line x1="45" y1="6" x2="80" y2="6" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-        </svg>
-      </div>
-    </div>
-
-    <form class="rsvp-form" id="rsvp-form" data-animate="fadeInUp" data-delay="0.2">
-      <div class="form-row">
-        <div class="form-group">
-          <input type="text" id="guest-name" name="name" placeholder=" " required>
-          <label for="guest-name">To'liq ism</label>
-        </div>
-        <div class="form-group">
-          <input type="email" id="guest-email" name="email" placeholder=" " required>
-          <label for="guest-email">Elektron pochta</label>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <input type="number" id="guest-count" name="guests" min="1" max="5" value="1" placeholder=" ">
-          <label for="guest-count">Mehmonlar soni</label>
-        </div>
-      </div>
-
-      <div class="form-group-radio">
-        <p class="radio-label">Qatnashasizmi?</p>
-        <div class="radio-options">
-          <label class="radio-option">
-            <input type="radio" name="attendance" value="accept" required>
-            <span class="radio-custom"></span>
-            <span class="radio-text">Xursandlik bilan qabul qilaman</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" name="attendance" value="decline">
-            <span class="radio-custom"></span>
-            <span class="radio-text">Afsuski kela olmayman</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <textarea id="guest-dietary" name="dietary" placeholder=" " rows="2"></textarea>
-        <label for="guest-dietary">Ovqatlanish cheklovlari (ixtiyoriy)</label>
-      </div>
-
-      <div class="form-group">
-        <textarea id="guest-message" name="message" placeholder=" " rows="3"></textarea>
-        <label for="guest-message">Kelin-kuyovga xabar (ixtiyoriy)</label>
-      </div>
-
-      <button type="submit" class="submit-btn">
-        <span class="btn-text">Javob yuborish</span>
-        <span class="btn-shimmer"></span>
-      </button>
-    </form>
-
-    <div class="rsvp-success" id="rsvp-success" style="display:none;">
-      <div class="success-heart">
-        <svg width="60" height="60" viewBox="0 0 60 60">
-          <path d="M30 15 C30 15, 20 0, 10 10 C0 20, 10 35, 30 52 C50 35, 60 20, 50 10 C40 0, 30 15, 30 15Z" fill="var(--color-primary)"/>
-        </svg>
-      </div>
-      <h3>Rahmat!</h3>
-      <p>Javobingiz qabul qilindi. Siz bilan birga nishonlashni intiqlik bilan kutmoqdamiz!</p>
-    </div>
-  </section>
 
   <!-- Footer -->
   <footer class="footer" id="footer">
