@@ -65,9 +65,11 @@
         opened = false;
         showCover = true;
         stopReveal();
+        // remount with entrance animation: cover-pre fades/scales the envelope back in
         cover.style.display = '';
-        cover.className = 'cover cover-closed';
+        cover.className = 'cover cover-closed cover-pre';
         phase = 'closed';
+        setTimeout(function () { cover.classList.remove('cover-pre'); }, 40);
         syncLocked();
       }
     };
