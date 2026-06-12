@@ -1,195 +1,255 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Vanilla port of "The Heritage Invite" design (envelope.jsx + invite.jsx).
+// Behavior, timings and class names mirror the design prototype exactly.
 
-  const WEDDING_DATE = new Date('2026-09-15T15:00:00');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function () {
+  'use strict';
 
-  // ============================
-  // NAVIGATION
-  // ============================
-  const nav = document.getElementById('nav');
+  var CONFIG = {
+    dateISO: '2026-09-15T15:00:00',
+    time: 'Soat 15:00',
+    venueName: 'OSIYO TO‘YXONASI',
+    lat: 41.3111,
+    lng: 69.2797,
+  };
 
-  function handleNavScroll() {
-    if (nav) {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    }
+  var UZ_DAYS = ['Yakshanba', 'Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'];
+
+  /* ===================== STATE ===================== */
+  var startOpen = (typeof location !== 'undefined' && location.hash === '#open');
+  var opened = startOpen;
+  var showCover = !startOpen;
+
+  var cover = document.getElementById('cover');
+  var phase = 'closed'; // closed → opening → lifting → gone
+
+  function syncLocked() {
+    document.body.classList.toggle('locked', showCover && !opened);
   }
 
-  // ============================
-  // SCROLL HANDLER
-  // ============================
-  let ticking = false;
-
-  function onScroll() {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        handleNavScroll();
-        ticking = false;
-      });
-      ticking = true;
-    }
+  function setPhase(p) {
+    cover.classList.remove('cover-' + phase);
+    phase = p;
+    cover.classList.add('cover-' + phase);
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
+  /* ===================== ENVELOPE ===================== */
+  function openCover() {
+    if (phase !== 'closed') return;
+    setPhase('opening');
+    setTimeout(function () { setPhase('lifting'); }, 1500);
+    setTimeout(function () {
+      setPhase('gone');
+      opened = true;
+      syncLocked();
+      startReveal();
+    }, 2900);
+    setTimeout(function () {
+      cover.style.display = 'none';
+      showCover = false;
+      syncLocked();
+      armReseal();
+    }, 4100);
+  }
+  cover.addEventListener('click', openCover);
 
-  // ============================
-  // INTERSECTION OBSERVER ANIMATIONS
-  // ============================
-  if (!prefersReducedMotion) {
-    const animatedElements = document.querySelectorAll('[data-animate]');
-    const animationObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          el.style.animationDelay = (el.dataset.delay || 0) + 's';
-          el.classList.add('animated');
-          animationObserver.unobserve(el);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-
-    animatedElements.forEach(el => animationObserver.observe(el));
-  } else {
-    document.querySelectorAll('[data-animate]').forEach(el => {
-      el.style.opacity = '1';
-    });
+  // reseal: once the guest has scrolled down, returning to the very top closes the envelope again
+  var resealCleanup = null;
+  function armReseal() {
+    if (showCover) return;
+    var armed = false;
+    var check = function () {
+      if (window.scrollY > window.innerHeight * 0.7) { armed = true; }
+      else if (armed && window.scrollY <= 2) {
+        // close the envelope again
+        if (resealCleanup) { resealCleanup(); resealCleanup = null; }
+        opened = false;
+        showCover = true;
+        stopReveal();
+        cover.style.display = '';
+        cover.className = 'cover cover-closed';
+        phase = 'closed';
+        syncLocked();
+      }
+    };
+    window.addEventListener('scroll', check, { passive: true });
+    var iv = setInterval(check, 280);
+    resealCleanup = function () {
+      window.removeEventListener('scroll', check);
+      clearInterval(iv);
+    };
   }
 
-  // ============================
-  // WEDDING RINGS ANIMATION
-  // ============================
-  if (!prefersReducedMotion) {
-    const ringsDividers = document.querySelectorAll('.rings-divider');
-    const ringsObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          entry.target.querySelector('.rings-container').classList.add('visible');
-          ringsObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    ringsDividers.forEach(el => ringsObserver.observe(el));
-  } else {
-    document.querySelectorAll('.rings-divider').forEach(el => {
-      el.classList.add('visible');
-      el.querySelector('.rings-container').classList.add('visible');
-    });
-  }
-
-  // ============================
-  // CARD TILT EFFECT
-  // ============================
-  if (!prefersReducedMotion) {
-    document.querySelectorAll('.detail-card').forEach(c => {
-      c.addEventListener('mousemove', (e) => {
-        const rect = c.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        c.style.transform = `translateY(-10px) scale(1.02) perspective(800px) rotateX(${y * -8}deg) rotateY(${x * 8}deg)`;
-      });
-      c.addEventListener('mouseleave', () => {
-        c.style.transform = '';
-        c.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease';
-      });
-      c.addEventListener('mouseenter', () => {
-        c.style.transition = 'transform 0.1s ease, box-shadow 0.5s ease';
-      });
-    });
-  }
-
-  // ============================
-  // COUNTDOWN TIMER
-  // ============================
-  const daysEl = document.getElementById('countdown-days');
-  const hoursEl = document.getElementById('countdown-hours');
-  const minutesEl = document.getElementById('countdown-minutes');
-  const secondsEl = document.getElementById('countdown-seconds');
-
-  function updateCountdown() {
-    const diff = WEDDING_DATE - new Date();
-    if (diff <= 0) {
-      if (daysEl) daysEl.textContent = '0';
-      if (hoursEl) hoursEl.textContent = '00';
-      if (minutesEl) minutesEl.textContent = '00';
-      if (secondsEl) secondsEl.textContent = '00';
+  /* ===================== SCROLL REVEAL ===================== */
+  var io = null, revealSafety = null;
+  function startReveal() {
+    var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) {
+      els.forEach(function (e) { e.classList.add('in'); });
       return;
     }
-    updateDigit(daysEl, String(Math.floor(diff / 86400000)));
-    updateDigit(hoursEl, String(Math.floor((diff / 3600000) % 24)).padStart(2, '0'));
-    updateDigit(minutesEl, String(Math.floor((diff / 60000) % 60)).padStart(2, '0'));
-    updateDigit(secondsEl, String(Math.floor((diff / 1000) % 60)).padStart(2, '0'));
+    var ioFired = false;
+    io = new IntersectionObserver(function (ents) {
+      ioFired = true;
+      ents.forEach(function (e) {
+        if (e.isIntersecting) e.target.classList.add('in');
+        else e.target.classList.remove('in');
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(function (e) { io.observe(e); });
+    revealSafety = setTimeout(function () {
+      if (!ioFired) els.forEach(function (e) { e.classList.add('in'); });
+    }, 3000);
+  }
+  function stopReveal() {
+    if (io) { io.disconnect(); io = null; }
+    if (revealSafety) { clearTimeout(revealSafety); revealSafety = null; }
   }
 
-  function updateDigit(el, value) {
-    if (!el || el.textContent === value) return;
-    el.textContent = value;
-    if (!prefersReducedMotion) {
-      el.classList.remove('flip');
-      void el.offsetWidth;
-      el.classList.add('flip');
+  /* ===================== INV TIME (weekday) ===================== */
+  var weekday = UZ_DAYS[new Date(CONFIG.dateISO).getDay()];
+  document.getElementById('inv-time').textContent =
+    CONFIG.time.toUpperCase() + ' · ' + weekday.toUpperCase();
+
+  /* ===================== COUNTDOWN (odometer) ===================== */
+  function calc(t) {
+    var d = Math.max(0, new Date(t).getTime() - Date.now());
+    return {
+      d: Math.floor(d / 864e5),
+      h: Math.floor((d % 864e5) / 36e5),
+      m: Math.floor((d % 36e5) / 6e4),
+      s: Math.floor((d % 6e4) / 1e3),
+    };
+  }
+
+  /* one rolling odometer digit: a 0-9(+0) strip that rolls vertically */
+  function createOdoDigit(initial) {
+    var digit = document.createElement('span');
+    digit.className = 'odo-digit';
+    var strip = document.createElement('span');
+    strip.className = 'odo-strip';
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0].forEach(function (n) {
+      var s = document.createElement('span');
+      s.textContent = n;
+      strip.appendChild(s);
+    });
+    digit.appendChild(strip);
+    var prev = initial, t1 = null, t2 = null;
+    function apply(pos) {
+      strip.style.transform = 'translateY(' + (0.17 - pos).toFixed(3) + 'em)';
     }
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
-  // ============================
-  // LEAFLET MAP (Lazy Loaded)
-  // ============================
-  const mapContainer = document.getElementById('map');
-  let mapInitialized = false;
-
-  if (mapContainer) {
-    const mapObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !mapInitialized) {
-          mapInitialized = true;
-          initMap();
-          mapObserver.unobserve(mapContainer);
+    apply(initial);
+    return {
+      el: digit,
+      set: function (d) {
+        if (d === prev) return;
+        clearTimeout(t1); clearTimeout(t2);
+        if (prev === 9 && d === 0) {
+          // roll FORWARD onto the duplicate 0, then snap back silently
+          apply(10);
+          t1 = setTimeout(function () {
+            strip.classList.add('no-anim');
+            apply(0);
+            t2 = setTimeout(function () { strip.classList.remove('no-anim'); }, 50);
+          }, 660);
+        } else {
+          apply(d);
         }
-      });
-    }, { rootMargin: '200px' });
-    mapObserver.observe(mapContainer);
+        prev = d;
+      },
+    };
   }
 
-  function initMap() {
-    const lat = parseFloat(mapContainer.dataset.lat) || 41.3111;
-    const lng = parseFloat(mapContainer.dataset.lng) || 69.2797;
-    const zoom = parseInt(mapContainer.dataset.zoom) || 15;
-
-    const map = L.map('map', { scrollWheelZoom: false }).setView([lat, lng], zoom);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors',
-      maxZoom: 19
-    }).addTo(map);
-
-    const icon = L.divIcon({
-      className: 'custom-marker',
-      html: '<div style="width:36px;height:36px;background:#d4a853;border:3px solid #fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 3px 15px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center"><span style="transform:rotate(45deg);color:#fff;font-size:14px">&#9829;</span></div>',
-      iconSize: [36, 36],
-      iconAnchor: [18, 36],
-      popupAnchor: [0, -36]
+  /* a wheel housing holding the digits of one unit */
+  function createOdoWheel(value) {
+    var wheel = document.createElement('div');
+    wheel.className = 'odo-wheel';
+    var digits = [];
+    String(value).padStart(2, '0').split('').forEach(function (ch, i) {
+      if (i > 0) {
+        var split = document.createElement('span');
+        split.className = 'odo-split';
+        wheel.appendChild(split);
+      }
+      var d = createOdoDigit(+ch);
+      digits.push(d);
+      wheel.appendChild(d.el);
     });
-
-    L.marker([lat, lng], { icon })
-      .addTo(map)
-      .bindPopup('<div style="text-align:center;font-family:Playfair Display,serif;padding:4px"><strong style="font-size:14px">Osiyo Toyhonasi</strong><br><span style="font-size:12px;color:#666">15 Sentyabr, 2026 — Soat 15:00</span></div>')
-      .openPopup();
+    return {
+      el: wheel,
+      count: digits.length,
+      set: function (v) {
+        var chs = String(v).padStart(2, '0').split('');
+        for (var i = 0; i < digits.length; i++) digits[i].set(+chs[i]);
+      },
+    };
   }
 
-  // ============================
-  // MAGNETIC BUTTON EFFECT
-  // ============================
-  if (!prefersReducedMotion) {
-    document.querySelectorAll('.directions-btn').forEach(btn => {
-      btn.addEventListener('mousemove', (e) => {
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        btn.style.transform = `translateY(-3px) translate(${x * 0.15}px, ${y * 0.15}px)`;
+  function initCountdown(target) {
+    var root = document.getElementById('countdown');
+    var labels = ['Kun', 'Soat', 'Daqiqa', 'Soniya'];
+    var keys = ['d', 'h', 'm', 's'];
+    var wheels = [];
+    var t = calc(target);
+
+    function build() {
+      root.innerHTML = '';
+      wheels = [];
+      labels.forEach(function (label, i) {
+        var cell = document.createElement('div');
+        cell.className = 'cd-cell';
+        var wheel = createOdoWheel(t[keys[i]]);
+        wheels.push(wheel);
+        cell.appendChild(wheel.el);
+        var lab = document.createElement('span');
+        lab.className = 'cd-lab';
+        lab.textContent = label;
+        cell.appendChild(lab);
+        root.appendChild(cell);
       });
-      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-    });
+    }
+    build();
+
+    setInterval(function () {
+      t = calc(target);
+      for (var i = 0; i < wheels.length; i++) {
+        var v = t[keys[i]];
+        if (String(v).padStart(2, '0').length !== wheels[i].count) { build(); return; }
+        wheels[i].set(v);
+      }
+    }, 1000);
   }
-});
+  initCountdown(CONFIG.dateISO);
+
+  /* ===================== MAP ===================== */
+  (function initMap() {
+    var ref = document.getElementById('map');
+    var tries = 0;
+    var init = function () {
+      if (!window.L || !ref) { if (tries++ < 60) return setTimeout(init, 100); return; }
+      if (ref._leaflet_id) return;
+      var map = window.L.map(ref, { scrollWheelZoom: false }).setView([CONFIG.lat, CONFIG.lng], 16);
+      window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap',
+      }).addTo(map);
+      var icon = window.L.divIcon({
+        className: 'pin-wrap',
+        html: '<div class="map-pin"><div class="map-pin-dot"></div></div>',
+        iconSize: [30, 40],
+        iconAnchor: [15, 38],
+      });
+      window.L.marker([CONFIG.lat, CONFIG.lng], { icon: icon }).addTo(map).bindPopup('<b>' + CONFIG.venueName + '</b>');
+      map.on('click', function () { map.scrollWheelZoom.enable(); });
+    };
+    init();
+  })();
+
+  /* ===================== BOOT ===================== */
+  if (startOpen) {
+    cover.style.display = 'none';
+    startReveal();
+    armReseal();
+  }
+  syncLocked();
+})();
