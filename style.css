@@ -17,209 +17,25 @@
   --font-script: 'Great Vibes', cursive;
   --font-body: 'Raleway', 'Segoe UI', sans-serif;
 
-  --envelope-base: #ede4d8;
-  --envelope-flap: #e2d9cc;
-  --botanical-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.22)' stroke-width='1'%3E%3Ccircle cx='100' cy='85' r='42'/%3E%3Ccircle cx='100' cy='85' r='30'/%3E%3Ccircle cx='100' cy='85' r='18'/%3E%3Ccircle cx='100' cy='85' r='7'/%3E%3Cpath d='M100,43 C118,28 130,48 118,58'/%3E%3Cpath d='M100,43 C82,28 70,48 82,58'/%3E%3Cpath d='M142,85 C158,68 142,52 128,68'/%3E%3Cpath d='M142,85 C158,102 142,118 128,102'/%3E%3Cpath d='M58,85 C42,68 58,52 72,68'/%3E%3Cpath d='M58,85 C42,102 58,118 72,102'/%3E%3Cpath d='M100,127 C118,142 130,122 118,112'/%3E%3Cpath d='M100,127 C82,142 70,122 82,112'/%3E%3Cpath d='M132,55 C148,42 145,62 132,68'/%3E%3Cpath d='M68,55 C52,42 55,62 68,68'/%3E%3Cpath d='M132,115 C148,128 145,108 132,102'/%3E%3Cpath d='M68,115 C52,128 55,108 68,102'/%3E%3Cpath d='M48,48 C22,22 0,55 25,72'/%3E%3Cpath d='M25,50 L42,55'/%3E%3Cpath d='M30,62 L42,56'/%3E%3Cpath d='M152,122 C178,148 200,115 175,98'/%3E%3Cpath d='M175,120 L158,115'/%3E%3Cpath d='M170,108 L158,114'/%3E%3Ccircle cx='30' cy='210' r='35'/%3E%3Ccircle cx='30' cy='210' r='24'/%3E%3Ccircle cx='30' cy='210' r='12'/%3E%3Cpath d='M30,175 C45,162 55,180 45,190'/%3E%3Cpath d='M30,175 C15,162 5,180 15,190'/%3E%3Cpath d='M65,210 C78,195 65,182 52,195'/%3E%3Cpath d='M-5,210 C-18,195 -5,182 8,195'/%3E%3Cpath d='M30,245 C45,258 55,240 45,230'/%3E%3Cpath d='M30,245 C15,258 5,240 15,230'/%3E%3Cpath d='M195,18 Q215,-2 235,18 Q215,38 195,18Z'/%3E%3Cline x1='215' y1='2' x2='215' y2='34'/%3E%3Cpath d='M205,10 L215,18'/%3E%3Cpath d='M225,10 L215,18'/%3E%3Cpath d='M175,42 Q192,28 210,42 Q192,58 175,42Z'/%3E%3Cline x1='192' y1='30' x2='192' y2='55'/%3E%3Cpath d='M220,170 Q235,155 250,170 Q235,185 220,170Z'/%3E%3Cline x1='235' y1='158' x2='235' y2='182'/%3E%3Cpath d='M5,135 Q18,122 32,135 Q18,148 5,135Z'/%3E%3Cline x1='18' y1='125' x2='18' y2='145'/%3E%3Cpath d='M100,127 C95,158 78,180 45,200'/%3E%3Cpath d='M152,122 C168,148 182,168 205,175'/%3E%3C/g%3E%3C/svg%3E");
-
   --transition-smooth: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --transition-bounce: 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* ============================
-   ENVELOPE INTRO
+   INVITATION HERO
    ============================ */
 
-body.no-scroll {
-  overflow: hidden;
-}
-
-.envelope-section {
-  height: 300vh;
-  position: relative;
-  background: #f8f4ef;
-}
-
-.envelope-wrapper {
-  position: sticky;
-  top: 0;
-  height: 100vh;
+.invitation-hero {
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 1000px;
-  box-sizing: border-box;
-}
-
-/* ---- Full-screen layout ---- */
-.envelope,
-.invitation-card {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* ---- Invitation card (sits BEHIND — always there) ---- */
-.invitation-card {
-  z-index: 1;
   background: #fff;
-  overflow: hidden;
-  overflow-y: auto;
+  position: relative;
+  padding: 3rem 1.5rem;
 }
 
-/* ---- Envelope (sits IN FRONT — fills screen) ---- */
-.envelope {
-  z-index: 5;
-  cursor: pointer;
-}
-
-/* Envelope body — full screen cream with embossed botanical */
-.envelope-body {
-  position: absolute;
-  inset: 0;
-  background-color: var(--envelope-base);
-  background-image: var(--botanical-pattern);
-  background-size: 250px 250px;
-  transition: opacity 1.4s ease;
-}
-
-/* V-flap decoration at top */
-.envelope-flap-deco {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 28vh;
-  background-color: var(--envelope-flap);
-  background-image: var(--botanical-pattern);
-  background-size: 250px 250px;
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  z-index: 1;
-}
-
-.envelope-flap-deco::after {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 12%;
-  right: 12%;
-  bottom: 15%;
-  border: 1px solid rgba(255,255,255,0.12);
-  clip-path: polygon(0 0, 50% 90%, 100% 0);
-  pointer-events: none;
-}
-
-/* Ribbon bands behind the seal */
-.envelope-ribbon-l,
-.envelope-ribbon-r {
-  position: absolute;
-  height: 22px;
-  background: linear-gradient(to bottom, rgba(225,218,208,0.4), rgba(215,208,196,0.7), rgba(225,218,208,0.4));
-  top: 42%;
-  z-index: 6;
-  width: 55%;
-}
-
-.envelope-ribbon-l {
-  right: 48%;
-  transform-origin: right center;
-  transform: rotate(4deg);
-}
-
-.envelope-ribbon-r {
-  left: 48%;
-  transform-origin: left center;
-  transform: rotate(-4deg);
-}
-
-/* Envelope label */
-.envelope-label {
-  position: absolute;
-  bottom: 18%;
-  left: 0;
-  right: 0;
-  text-align: center;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.envelope-label p {
-  font-family: var(--font-script);
-  font-size: clamp(1.8rem, 6vw, 2.8rem);
-  color: rgba(160,140,120,0.7);
-  text-shadow: 0 1px 2px rgba(255,255,255,0.4);
-}
-
-/* ---- Wax seal (real image, centered, lifts up on open) ---- */
-.wax-seal {
-  position: absolute;
-  top: 42%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 8;
-}
-
-.wax-seal img {
-  width: 130px;
-  height: 130px;
-  object-fit: contain;
-  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.18)) drop-shadow(0 3px 8px rgba(0,0,0,0.12));
-  user-select: none;
-  pointer-events: none;
-}
-
-/* ---- Tap prompt ---- */
-.open-prompt {
-  position: fixed;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
-  text-align: center;
-  cursor: pointer;
-  transition: opacity 0.4s ease;
-}
-
-.open-prompt span {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--color-text-light);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-/* ---- Scroll hint (hidden until opened) ---- */
-.envelope-scroll-hint {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  transition: opacity 0.5s ease;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.envelope-scroll-hint span {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--color-text-light);
-}
-
-.envelope-scroll-hint .scroll-chevron {
-  color: var(--color-primary);
-  animation: bounceDown 2s ease-in-out infinite;
-}
-
-/* Invitation card — full screen behind envelope */
-.invitation-card::before {
+.invitation-hero::before {
   content: '';
   position: absolute;
   inset: 12px;
@@ -231,7 +47,6 @@ body.no-scroll {
 .invitation-inner {
   padding: 2rem 1.5rem;
   text-align: center;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -240,7 +55,6 @@ body.no-scroll {
   position: relative;
 }
 
-/* Invitation card typography */
 .inv-bismillah {
   font-family: 'Amiri', serif;
   font-size: clamp(1.3rem, 3vw, 1.8rem);
@@ -377,25 +191,6 @@ body.no-scroll {
   text-transform: uppercase;
   color: var(--color-text-light);
 }
-
-/* Content reveal stagger */
-.invitation-inner > * {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.invitation-card.visible .invitation-inner > *:nth-child(1)  { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
-.invitation-card.visible .invitation-inner > *:nth-child(2)  { opacity: 1; transform: translateY(0); transition-delay: 0.22s; }
-.invitation-card.visible .invitation-inner > *:nth-child(3)  { opacity: 1; transform: translateY(0); transition-delay: 0.29s; }
-.invitation-card.visible .invitation-inner > *:nth-child(4)  { opacity: 1; transform: translateY(0); transition-delay: 0.36s; }
-.invitation-card.visible .invitation-inner > *:nth-child(5)  { opacity: 1; transform: translateY(0); transition-delay: 0.43s; }
-.invitation-card.visible .invitation-inner > *:nth-child(6)  { opacity: 1; transform: translateY(0); transition-delay: 0.50s; }
-.invitation-card.visible .invitation-inner > *:nth-child(7)  { opacity: 1; transform: translateY(0); transition-delay: 0.57s; }
-.invitation-card.visible .invitation-inner > *:nth-child(8)  { opacity: 1; transform: translateY(0); transition-delay: 0.64s; }
-.invitation-card.visible .invitation-inner > *:nth-child(9)  { opacity: 1; transform: translateY(0); transition-delay: 0.71s; }
-.invitation-card.visible .invitation-inner > *:nth-child(10) { opacity: 1; transform: translateY(0); transition-delay: 0.78s; }
-.invitation-card.visible .invitation-inner > *:nth-child(11) { opacity: 1; transform: translateY(0); transition-delay: 0.85s; }
 
 
 /* ============================
@@ -642,8 +437,6 @@ body {
   justify-content: center;
   padding: 1.2rem 3rem;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0;
-  pointer-events: none;
 }
 
 .nav.scrolled {
@@ -1921,11 +1714,6 @@ section {
     transform: none !important;
   }
 
-  .invitation-inner > * {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
 }
 
 a:focus-visible,
