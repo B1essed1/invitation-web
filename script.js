@@ -8,8 +8,8 @@
     dateISO: '2026-09-15T15:00:00',
     time: 'Soat 15:00',
     venueName: 'OSIYO TO‘YXONASI',
-    lat: 41.3111,
-    lng: 69.2797,
+    lat: 40.930817,
+    lng: 71.894547,
   };
 
   var UZ_DAYS = ['Yakshanba', 'Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'];
