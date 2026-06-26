@@ -14,6 +14,13 @@
 
   var UZ_DAYS = ['Yakshanba', 'Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'];
 
+  /* ===================== GUEST NAME ===================== */
+  var params = new URLSearchParams(window.location.search);
+  var guestName = params.get('name');
+  if (guestName) {
+    document.getElementById('guest-name').textContent = guestName;
+  }
+
   /* ===================== STATE ===================== */
   var startOpen = (typeof location !== 'undefined' && location.hash === '#open');
   var opened = startOpen;
