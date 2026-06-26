@@ -5,8 +5,8 @@
   'use strict';
 
   var CONFIG = {
-    dateISO: '2026-09-15T15:00:00',
-    time: 'Soat 15:00',
+    dateISO: '2026-07-11T14:00:00',
+    time: 'Soat 14:00',
     venueName: ‘ZAMIN TO’YXONASI’,
     lat: 40.930817,
     lng: 71.894547,
