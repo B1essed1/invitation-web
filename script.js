@@ -7,7 +7,7 @@
   var CONFIG = {
     dateISO: '2026-07-11T14:00:00',
     time: 'Soat 14:00',
-    venueName: ‘ZAMIN TO’YXONASI’,
+    venueName: 'ZAMIN TO\'YXONASI',
     lat: 40.930817,
     lng: 71.894547,
   };
