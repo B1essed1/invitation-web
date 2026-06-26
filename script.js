@@ -224,13 +224,13 @@
   initCountdown(CONFIG.dateISO);
 
   /* ===================== MAP ===================== */
-  (function initMap() {
-    var ref = document.getElementById('map');
+  function buildMap(id, lat, lng, label) {
+    var ref = document.getElementById(id);
     var tries = 0;
     var init = function () {
       if (!window.L || !ref) { if (tries++ < 60) return setTimeout(init, 100); return; }
       if (ref._leaflet_id) return;
-      var map = window.L.map(ref, { scrollWheelZoom: false }).setView([CONFIG.lat, CONFIG.lng], 16);
+      var map = window.L.map(ref, { scrollWheelZoom: false }).setView([lat, lng], 16);
       window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap',
@@ -241,11 +241,13 @@
         iconSize: [30, 40],
         iconAnchor: [15, 38],
       });
-      window.L.marker([CONFIG.lat, CONFIG.lng], { icon: icon }).addTo(map).bindPopup('<b>' + CONFIG.venueName + '</b>');
+      window.L.marker([lat, lng], { icon: icon }).addTo(map).bindPopup('<b>' + label + '</b>');
       map.on('click', function () { map.scrollWheelZoom.enable(); });
     };
     init();
-  })();
+  }
+  buildMap('map-uy', 40.934242, 71.832632, 'UY');
+  buildMap('map', CONFIG.lat, CONFIG.lng, CONFIG.venueName);
 
   /* ===================== BOOT ===================== */
   if (startOpen) {
