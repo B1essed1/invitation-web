@@ -120,6 +120,9 @@ html.js .rings:not(.in) .ring:nth-of-type(2){ transform:translateX(20px); }
 .card-time{ font-family:var(--display); font-weight:700; font-size:26px; color:var(--gold); margin:0 0 3px; }
 .card-venue{ font-family:var(--body); font-weight:600; font-size:14.5px; color:var(--ink); margin:0; }
 .card-note{ font-family:var(--body); font-size:13px; color:var(--muted); margin:3px 0 0; }
+.card-link{ display:inline-block; margin-top:10px; font-family:var(--body); font-weight:600; font-size:13px;
+  color:var(--gold); text-decoration:none; letter-spacing:1px; transition:opacity .2s; }
+.card-link:hover{ opacity:.7; }
 
 .cd-wrap{ text-align:center; margin-top:40px; }
 .cd-title{ font-family:var(--display); font-style:italic; font-size:clamp(16px,4.4vw,20px); color:var(--muted); margin:0 0 18px; }
