@@ -1,198 +1,389 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uz">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>Shohdiyor &amp; Ruxshona — Nikoh Taklifnomasi</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Amiri:wght@400;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/envelope-texture.png">
-<link rel="preload" as="image" href="assets/seal.png">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<link rel="stylesheet" href="style.css">
-<script>document.documentElement.classList.add('js');</script>
-</head>
-<body class="locked">
-
-  <div class="frame">
-    <div class="invite">
-
-      <!-- ===== INVITATION BLOCK ===== -->
-      <section class="sec sec-inv reveal in">
-        <div class="inv-frame">
-          <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-          <svg width="60" height="16" viewBox="0 0 60 16" fill="none">
-            <path d="M2,8 Q15,1 30,8 Q45,15 58,8" stroke="#C2A04E" stroke-width="1" fill="none" opacity="0.6" />
-            <circle cx="30" cy="8" r="1.8" fill="#C2A04E" opacity="0.7" />
-          </svg>
-          <p class="verse">«Alloh ularning qalbini sevgi ila birlashtirdi»</p>
-          <p class="verse-ref">Anfol surasi, 63-oyat</p>
-          <p class="inv-text">Hurmatli aziz mehmonimiz, Sizni hayotimizning eng go‘zal va baxtli onlarida biz bilan bo‘lishingiz istagida nikoh shodiyonamizga taklif qilamiz.</p>
-          <h2 class="inv-names">Shohdiyor<span class="amp">&amp;</span>Ruxshona</h2>
-          <div class="inv-families">
-            <span>Mirzaxolovlar oilasi</span>
-            <svg width="16" height="16" viewBox="0 0 14 14" aria-hidden="true">
-              <path d="M7 3.5C7 3.5 4.8 0 2.6 2.2 0.4 4.4 2.6 7 7 11.4 11.4 7 13.6 4.4 11.4 2.2 9.2 0 7 3.5 7 3.5Z" fill="#C68B6F" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Shohdiyor &amp; Ruxshona — Nikoh Taklifnomasi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Amiri:wght@400;700&family=Raleway:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="assets/envelope-texture.png" />
+    <link rel="preload" as="image" href="assets/seal.png" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body class="locked">
+    <div class="frame">
+      <div class="invite">
+        <!-- ===== INVITATION BLOCK ===== -->
+        <section class="sec sec-inv reveal in">
+          <div class="inv-frame">
+            <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+            <svg width="60" height="16" viewBox="0 0 60 16" fill="none">
+              <path
+                d="M2,8 Q15,1 30,8 Q45,15 58,8"
+                stroke="#C2A04E"
+                stroke-width="1"
+                fill="none"
+                opacity="0.6"
+              />
+              <circle cx="30" cy="8" r="1.8" fill="#C2A04E" opacity="0.7" />
             </svg>
-            <span>Bayzaqovlar oilasi</span>
-          </div>
-          <div class="inv-date">
-            <span>11</span><i>|</i><span>07</span><i>|</i><span>2026</span>
-          </div>
-          <p class="inv-time" id="inv-time">SOAT 14:00</p>
-          <div class="inv-venue">
-            <div class="inv-venue-line"></div>
-            <p class="inv-venue-name">ZAMIN TO’YXONASI</p>
-            <p class="inv-venue-addr">Mo‘ljal: Ko‘k Terak General, Toshkent</p>
-          </div>
-        </div>
-      </section>
-
-      <div class="rings reveal">
-        <span class="rings-line"></span>
-        <span class="ring"></span><span class="ring"></span>
-        <span class="rings-line"></span>
-      </div>
-
-      <!-- ===== DETAILS + COUNTDOWN ===== -->
-      <section class="sec sec-details reveal">
-        <div class="sec-head">
-          <h2 class="sec-title">Tadbir tafsilotlari</h2>
-          <p class="sec-sub">Sizni kutib qolamiz</p>
-          <svg width="60" height="16" viewBox="0 0 60 16" fill="none">
-            <path d="M2,8 Q15,1 30,8 Q45,15 58,8" stroke="#C2A04E" stroke-width="1" fill="none" opacity="0.6" />
-            <circle cx="30" cy="8" r="1.8" fill="#C2A04E" opacity="0.7" />
-          </svg>
-        </div>
-        <div class="cards">
-          <div class="card" style="transition-delay:0s">
-            <div class="card-icon">
-              <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#B8893D" stroke-width="1.5"><circle cx="24" cy="27" r="14"/><path d="M18 13l6-6 6 6"/></svg>
+            <p class="verse">«Alloh ularning qalbini sevgi ila birlashtirdi»</p>
+            <p class="verse-ref">Anfol surasi, 63-oyat</p>
+            <p class="inv-text">
+              Hurmatli aziz mehmonimiz, Sizni hayotimizning eng go‘zal va baxtli
+              onlarida biz bilan bo‘lishingiz istagida nikoh shodiyonamizga
+              taklif qilamiz.
+            </p>
+            <h2 class="inv-names">
+              Shohdiyor<span class="amp">&amp;</span>Ruxshona
+            </h2>
+            <div class="inv-families">
+              <span>Mirzaxolovlar oilasi</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 14 14"
+                aria-hidden="true"
+              >
+                <path
+                  d="M7 3.5C7 3.5 4.8 0 2.6 2.2 0.4 4.4 2.6 7 7 11.4 11.4 7 13.6 4.4 11.4 2.2 9.2 0 7 3.5 7 3.5Z"
+                  fill="#C68B6F"
+                />
+              </svg>
+              <span>Bayzaqovlar oilasi</span>
             </div>
-            <h3>Nahorgi osh</h3>
-            <div class="card-rule"></div>
-            <p class="card-time">Bomdod namozidan so’ng</p>
-            <a class="card-link" href="https://yandex.uz/maps/?ll=71.832632%2C40.934242&amp;z=17&amp;pt=71.832632,40.934242" target="_blank" rel="noopener">Yo’nalish olish →</a>
-          </div>
-          <div class="card" style="transition-delay:0.1s">
-            <div class="card-icon">
-              <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#B8893D" stroke-width="1.5"><path d="M12 10h24l-2 14a10 10 0 01-20 0z"/><path d="M24 34v6M16 42h16"/></svg>
+            <div class="inv-date">
+              <span>11</span><i>|</i><span>07</span><i>|</i><span>2026</span>
             </div>
-            <h3>Bazm</h3>
-            <div class="card-rule"></div>
-            <p class="card-time">14:00</p>
-            <p class="card-venue">Kechki ziyofat va bayram</p>
-            <p class="card-note">Kiyim kodi: Rasmiy</p>
+            <p class="inv-time" id="inv-time">SOAT 14:00</p>
+            <div class="inv-venue">
+              <div class="inv-venue-line"></div>
+              <p class="inv-venue-name">ZAMIN TO’YXONASI</p>
+              <p class="inv-venue-addr">Ko’k Terak General, Toshkent</p>
+            </div>
           </div>
+        </section>
 
+        <div class="rings reveal">
+          <span class="rings-line"></span>
+          <span class="ring"></span><span class="ring"></span>
+          <span class="rings-line"></span>
         </div>
-        <div class="cd-wrap">
-          <p class="cd-title">Abadiylikkacha qolgan vaqt</p>
-          <div class="countdown" id="countdown"></div>
+
+        <!-- ===== DETAILS + COUNTDOWN ===== -->
+        <section class="sec sec-details reveal">
+          <div class="sec-head">
+            <h2 class="sec-title">Tadbir tafsilotlari</h2>
+            <p class="sec-sub">Sizni kutib qolamiz</p>
+            <svg width="60" height="16" viewBox="0 0 60 16" fill="none">
+              <path
+                d="M2,8 Q15,1 30,8 Q45,15 58,8"
+                stroke="#C2A04E"
+                stroke-width="1"
+                fill="none"
+                opacity="0.6"
+              />
+              <circle cx="30" cy="8" r="1.8" fill="#C2A04E" opacity="0.7" />
+            </svg>
+          </div>
+          <div class="cards">
+            <div class="card" style="transition-delay: 0s">
+              <div class="card-icon">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  stroke="#B8893D"
+                  stroke-width="1.5"
+                >
+                  <circle cx="24" cy="27" r="14" />
+                  <path d="M18 13l6-6 6 6" />
+                </svg>
+              </div>
+              <h3>Nahorgi osh</h3>
+              <div class="card-rule"></div>
+              <p class="card-time">Bomdod namozidan so’ng</p>
+              <a
+                class="card-link"
+                href="https://yandex.uz/maps/?ll=71.832632%2C40.934242&amp;z=17&amp;pt=71.832632,40.934242"
+                target="_blank"
+                rel="noopener"
+                >Yo’nalish olish →</a
+              >
+            </div>
+            <div class="card" style="transition-delay: 0.1s">
+              <div class="card-icon">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  stroke="#B8893D"
+                  stroke-width="1.5"
+                >
+                  <path d="M12 10h24l-2 14a10 10 0 01-20 0z" />
+                  <path d="M24 34v6M16 42h16" />
+                </svg>
+              </div>
+              <h3>Bazm</h3>
+              <div class="card-rule"></div>
+              <p class="card-time">14:00</p>
+              <p class="card-venue">Kechki ziyofat va bazm</p>
+            </div>
+
+          </div>
+          <div class="cd-wrap">
+            <p class="cd-title">To'ygacha qolgan vaqt</p>
+            <div class="countdown" id="countdown"></div>
+          </div>
+        </section>
+
+        <div class="rings reveal">
+          <span class="rings-line"></span>
+          <span class="ring"></span><span class="ring"></span>
+          <span class="rings-line"></span>
         </div>
-      </section>
 
-      <div class="rings reveal">
-        <span class="rings-line"></span>
-        <span class="ring"></span><span class="ring"></span>
-        <span class="rings-line"></span>
-      </div>
+        <!-- ===== MAP: UY (Nahorgi osh) ===== -->
+        <section class="sec sec-map reveal">
+          <div class="sec-head">
+            <h2 class="sec-title">Manzil — Uy</h2>
+            <p class="sec-sub">Nahorgi osh</p>
+            <svg width="60" height="16" viewBox="0 0 60 16" fill="none">
+              <path
+                d="M2,8 Q15,1 30,8 Q45,15 58,8"
+                stroke="#C2A04E"
+                stroke-width="1"
+                fill="none"
+                opacity="0.6"
+              />
+              <circle cx="30" cy="8" r="1.8" fill="#C2A04E" opacity="0.7" />
+            </svg>
+          </div>
+          <div class="map-frame"><div class="map" id="map-uy"></div></div>
+          <div class="map-info">
+            <div class="map-place">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#B8893D"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z"
+                />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+              <div><h4>UY</h4></div>
+            </div>
+            <a
+              class="btn-gold"
+              href="https://yandex.uz/maps/?ll=71.832632%2C40.934242&amp;z=17&amp;pt=71.832632,40.934242"
+              target="_blank"
+              rel="noopener"
+            >
+              Yo’nalish olish
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </a>
+          </div>
+        </section>
 
-      <!-- ===== MAP: UY (Nahorgi osh) ===== -->
-      <section class="sec sec-map reveal">
-        <div class="sec-head">
-          <h2 class="sec-title">Manzil — Uy</h2>
-          <p class="sec-sub">Nahorgi osh</p>
-          <svg width="60" height="16" viewBox="0 0 60 16" fill="none">
-            <path d="M2,8 Q15,1 30,8 Q45,15 58,8" stroke="#C2A04E" stroke-width="1" fill="none" opacity="0.6" />
-            <circle cx="30" cy="8" r="1.8" fill="#C2A04E" opacity="0.7" />
+        <!-- ===== MAP: ZAMIN (Bazm) ===== -->
+        <section class="sec sec-map reveal">
+          <div class="sec-head">
+            <h2 class="sec-title">Manzil — Zamin To’yxonasi</h2>
+            <p class="sec-sub">Bazm</p>
+            <svg width="60" height="16" viewBox="0 0 60 16" fill="none">
+              <path
+                d="M2,8 Q15,1 30,8 Q45,15 58,8"
+                stroke="#C2A04E"
+                stroke-width="1"
+                fill="none"
+                opacity="0.6"
+              />
+              <circle cx="30" cy="8" r="1.8" fill="#C2A04E" opacity="0.7" />
+            </svg>
+          </div>
+          <div class="map-frame"><div class="map" id="map"></div></div>
+          <div class="map-info">
+            <div class="map-place">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#B8893D"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z"
+                />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+              <div><h4>ZAMIN TO’YXONASI</h4></div>
+            </div>
+            <a
+              class="btn-gold"
+              href="https://yandex.uz/maps/?ll=71.894895%2C40.931363&amp;mode=poi&amp;poi%5Bpoint%5D=71.894547%2C40.930817&amp;poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D231687914578&amp;z=17.57"
+              target="_blank"
+              rel="noopener"
+            >
+              Yo’nalish olish
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer reveal">
+          <div class="footer-mono">Sh &amp; R</div>
+          <p class="footer-hash">#ShohdiyorVaRuxshona</p>
+          <svg
+            width="200"
+            height="20"
+            viewBox="0 0 200 20"
+            class="footer-flourish"
+          >
+            <path
+              d="M0 10 Q50 0 100 10 Q150 20 200 10"
+              fill="none"
+              stroke="#C2A04E"
+              stroke-width="1"
+              opacity="0.5"
+            />
           </svg>
-        </div>
-        <div class="map-frame"><div class="map" id="map-uy"></div></div>
-        <div class="map-info">
-          <div class="map-place">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B8893D" stroke-width="1.5"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            <div><h4>UY</h4></div>
-          </div>
-          <a class="btn-gold" href="https://yandex.uz/maps/?ll=71.832632%2C40.934242&amp;z=17&amp;pt=71.832632,40.934242" target="_blank" rel="noopener">
-            Yo’nalish olish
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        </div>
-      </section>
-
-      <!-- ===== MAP: ZAMIN (Bazm) ===== -->
-      <section class="sec sec-map reveal">
-        <div class="sec-head">
-          <h2 class="sec-title">Manzil — Zamin To’yxonasi</h2>
-          <p class="sec-sub">Bazm</p>
-          <svg width="60" height="16" viewBox="0 0 60 16" fill="none">
-            <path d="M2,8 Q15,1 30,8 Q45,15 58,8" stroke="#C2A04E" stroke-width="1" fill="none" opacity="0.6" />
-            <circle cx="30" cy="8" r="1.8" fill="#C2A04E" opacity="0.7" />
-          </svg>
-        </div>
-        <div class="map-frame"><div class="map" id="map"></div></div>
-        <div class="map-info">
-          <div class="map-place">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B8893D" stroke-width="1.5"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            <div><h4>ZAMIN TO’YXONASI</h4></div>
-          </div>
-          <a class="btn-gold" href="https://yandex.uz/maps/?ll=71.894895%2C40.931363&amp;mode=poi&amp;poi%5Bpoint%5D=71.894547%2C40.930817&amp;poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D231687914578&amp;z=17.57" target="_blank" rel="noopener">
-            Yo’nalish olish
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        </div>
-      </section>
-
-      <!-- ===== FOOTER ===== -->
-      <footer class="footer reveal">
-        <div class="footer-mono">Sh &amp; R</div>
-        <p class="footer-hash">#ShohdiyorVaRuxshona</p>
-        <svg width="200" height="20" viewBox="0 0 200 20" class="footer-flourish"><path d="M0 10 Q50 0 100 10 Q150 20 200 10" fill="none" stroke="#C2A04E" stroke-width="1" opacity="0.5"/></svg>
-        <p class="footer-made">Sevgi bilan yaratilgan</p>
-        <p class="footer-date">11 Iyul, 2026</p>
-      </footer>
-
-    </div>
-  </div>
-
-  <!-- ===== ENVELOPE COVER ===== -->
-  <div class="cover cover-closed" id="cover" role="button" aria-label="Taklifnomani ochish">
-    <!-- envelope interior (revealed behind flap) -->
-    <div class="cover-inside"></div>
-    <svg class="cover-inside-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,0 L50,70 L100,0" fill="none" stroke="rgba(72,42,36,0.45)" stroke-width="1.4" vector-effect="non-scaling-stroke" />
-      <path d="M0,1.2 L50,71.2 L100,1.2" fill="none" stroke="rgba(60,32,28,0.18)" stroke-width="3" vector-effect="non-scaling-stroke" />
-    </svg>
-
-    <!-- lower body text -->
-    <div class="cover-body">
-      <div class="cover-invited">You are invited</div>
-      <div class="cover-sub">Siz taklif qilingansiz</div>
-      <div class="cover-hint">
-        <span>Ochish uchun bosing</span>
-        <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="currentColor" stroke-width="1" opacity="0.5"/><path d="M17 23V11M12 16l5-5 5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="footer-made">Sevgi bilan yaratilgan</p>
+          <p class="footer-date">11 Iyul, 2026</p>
+        </footer>
       </div>
     </div>
 
-    <!-- soft shadow cast by the flap (static layer — keeps the flap itself crisp) -->
-    <div class="cover-flap-under"></div>
-
-    <!-- top flap — seal rides on it, lifting together -->
-    <div class="cover-flap">
-      <div class="cover-flap-paper"></div>
-      <svg class="cover-flap-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0,-1 L50,99 L100,-1" fill="none" stroke="rgba(255,252,250,0.6)" stroke-width="1" vector-effect="non-scaling-stroke" />
-        <path d="M0,0 L50,100 L100,0" fill="none" stroke="rgba(150,104,92,0.4)" stroke-width="1.2" vector-effect="non-scaling-stroke" />
+    <!-- ===== ENVELOPE COVER ===== -->
+    <div
+      class="cover cover-closed"
+      id="cover"
+      role="button"
+      aria-label="Taklifnomani ochish"
+    >
+      <!-- envelope interior (revealed behind flap) -->
+      <div class="cover-inside"></div>
+      <svg
+        class="cover-inside-svg"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M0,0 L50,70 L100,0"
+          fill="none"
+          stroke="rgba(72,42,36,0.45)"
+          stroke-width="1.4"
+          vector-effect="non-scaling-stroke"
+        />
+        <path
+          d="M0,1.2 L50,71.2 L100,1.2"
+          fill="none"
+          stroke="rgba(60,32,28,0.18)"
+          stroke-width="3"
+          vector-effect="non-scaling-stroke"
+        />
       </svg>
-      <div class="cover-seal">
-        <img src="assets/seal.png" alt="Sh & R" draggable="false">
+
+      <!-- lower body text -->
+      <div class="cover-body">
+        <div class="cover-invited">You are invited</div>
+        <div class="cover-sub">Siz taklif qilingansiz</div>
+        <div class="cover-hint">
+          <span>Ochish uchun bosing</span>
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+            <circle
+              cx="17"
+              cy="17"
+              r="16"
+              stroke="currentColor"
+              stroke-width="1"
+              opacity="0.5"
+            />
+            <path
+              d="M17 23V11M12 16l5-5 5 5"
+              stroke="currentColor"
+              stroke-width="1.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <!-- soft shadow cast by the flap (static layer — keeps the flap itself crisp) -->
+      <div class="cover-flap-under"></div>
+
+      <!-- top flap — seal rides on it, lifting together -->
+      <div class="cover-flap">
+        <div class="cover-flap-paper"></div>
+        <svg
+          class="cover-flap-svg"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0,-1 L50,99 L100,-1"
+            fill="none"
+            stroke="rgba(255,252,250,0.6)"
+            stroke-width="1"
+            vector-effect="non-scaling-stroke"
+          />
+          <path
+            d="M0,0 L50,100 L100,0"
+            fill="none"
+            stroke="rgba(150,104,92,0.4)"
+            stroke-width="1.2"
+            vector-effect="non-scaling-stroke"
+          />
+        </svg>
+        <div class="cover-seal">
+          <img src="assets/seal.png" alt="Sh & R" draggable="false" />
+        </div>
       </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
