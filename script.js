@@ -14,11 +14,18 @@
 
   var UZ_DAYS = ['Yakshanba', 'Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'];
 
-  /* ===================== GUEST NAME ===================== */
+  /* ===================== URL PARAMS ===================== */
   var params = new URLSearchParams(window.location.search);
   var guestName = params.get('name');
   if (guestName) {
     document.getElementById('guest-name').textContent = guestName;
+  }
+
+  var eventType = params.get('type');
+  if (eventType === '1') {
+    document.querySelectorAll('.event-bazm').forEach(function (el) { el.style.display = 'none'; });
+  } else if (eventType === '2') {
+    document.querySelectorAll('.event-kelin').forEach(function (el) { el.style.display = 'none'; });
   }
 
   /* ===================== STATE ===================== */
