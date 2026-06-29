@@ -23,6 +23,9 @@
 
   var eventType = params.get('type');
   if (eventType === '1') {
+    CONFIG.dateISO = '2026-07-10T12:00:00';
+    CONFIG.time = 'Soat 12:00';
+    document.getElementById('inv-day').textContent = '10';
     document.querySelectorAll('.event-bazm').forEach(function (el) { el.style.display = 'none'; });
   } else if (eventType === '2') {
     document.querySelectorAll('.event-kelin').forEach(function (el) { el.style.display = 'none'; });
