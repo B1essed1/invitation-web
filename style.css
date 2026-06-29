@@ -119,6 +119,7 @@ html.js .rings:not(.in) .ring:nth-of-type(2){ transform:translateX(20px); }
 .card-rule{ width:40px; height:2px; background:var(--gold-lt); margin:0 auto 10px; }
 .card-time{ font-family:var(--display); font-weight:700; font-size:26px; color:var(--gold); margin:0 0 3px; }
 .card-time-sm{ font-size:16px; }
+.card-date{ font-family:var(--display); font-weight:600; font-size:14px; color:var(--muted); margin:0 0 4px; letter-spacing:1px; }
 .card-venue{ font-family:var(--body); font-weight:600; font-size:14.5px; color:var(--ink); margin:0; }
 .card-note{ font-family:var(--body); font-size:13px; color:var(--muted); margin:3px 0 0; }
 .card-link{ display:inline-block; margin-top:10px; font-family:var(--body); font-weight:600; font-size:13px;
