@@ -26,6 +26,7 @@
     CONFIG.dateISO = '2026-07-10T12:00:00';
     CONFIG.time = 'Soat 12:00';
     document.getElementById('inv-day').textContent = '10';
+    document.getElementById('inv-venue').style.display = 'none';
     document.querySelectorAll('.event-bazm').forEach(function (el) { el.style.display = 'none'; });
   } else if (eventType === '2') {
     document.getElementById('inv-day').textContent = '11';
