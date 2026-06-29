@@ -253,7 +253,7 @@
     };
     init();
   }
-  buildMap('map-uy', 40.934242, 71.832632, 'UY');
+  buildMap('map-uy', 40.920941, 71.834337, 'KELIN UYI');
   buildMap('map', CONFIG.lat, CONFIG.lng, CONFIG.venueName);
 
   /* ===================== BOOT ===================== */
