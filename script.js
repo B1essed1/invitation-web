@@ -5,11 +5,11 @@
   'use strict';
 
   var CONFIG = {
-    dateISO: '2026-07-11T14:00:00',
-    time: 'Soat 14:00',
-    venueName: 'ZAMIN TO\'YXONASI',
-    lat: 40.930817,
-    lng: 71.894547,
+    dateISO: '2026-07-10T18:00:00',
+    time: 'Soat 18:00',
+    venueName: 'SARDOBA TO\'YXONASI',
+    lat: 40.99429,
+    lng: 71.667252,
   };
 
   var UZ_DAYS = ['Yakshanba', 'Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'];
@@ -19,18 +19,6 @@
   var guestName = params.get('name');
   if (guestName) {
     document.getElementById('guest-name').textContent = guestName;
-  }
-
-  var eventType = params.get('type');
-  if (eventType === '1') {
-    CONFIG.dateISO = '2026-07-10T12:00:00';
-    CONFIG.time = 'Soat 12:00';
-    document.getElementById('inv-day').textContent = '10';
-    document.getElementById('inv-venue').style.display = 'none';
-    document.querySelectorAll('.event-bazm').forEach(function (el) { el.style.display = 'none'; });
-  } else if (eventType === '2') {
-    document.getElementById('inv-day').textContent = '11';
-    document.querySelectorAll('.event-kelin').forEach(function (el) { el.style.display = 'none'; });
   }
 
   /* ===================== STATE ===================== */
@@ -265,7 +253,6 @@
     };
     init();
   }
-  buildMap('map-uy', 40.920941, 71.834337, 'KELIN UYI');
   buildMap('map', CONFIG.lat, CONFIG.lng, CONFIG.venueName);
 
   /* ===================== BOOT ===================== */
