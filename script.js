@@ -44,6 +44,15 @@
   music.volume = 0.5;
   music.play().catch(function () {});
 
+  document.addEventListener('click', function startMusic() {
+    if (music.paused) music.play().catch(function () {});
+    document.removeEventListener('click', startMusic);
+  });
+  document.addEventListener('touchstart', function startMusicTouch() {
+    if (music.paused) music.play().catch(function () {});
+    document.removeEventListener('touchstart', startMusicTouch);
+  });
+
   function openCover() {
     if (phase !== 'closed') return;
     setPhase('opening');
