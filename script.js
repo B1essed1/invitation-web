@@ -42,13 +42,7 @@
   /* ===================== ENVELOPE ===================== */
   var music = document.getElementById('bg-music');
   music.volume = 0.5;
-
-  var splash = document.getElementById('splash');
-  splash.addEventListener('click', function () {
-    music.play().catch(function () {});
-    splash.classList.add('hide');
-    setTimeout(function () { splash.style.display = 'none'; }, 900);
-  });
+  music.play().catch(function () {});
 
   function openCover() {
     if (phase !== 'closed') return;
