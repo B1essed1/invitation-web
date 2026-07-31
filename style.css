@@ -23,20 +23,20 @@ img{ -webkit-user-drag:none; user-select:none; }
 .cover::after{ content:''; position:absolute; inset:0; pointer-events:none;
   background:radial-gradient(120% 80% at 50% 42%, transparent 55%, rgba(120,80,70,.18)); }
 /* envelope interior — real paper pocket: texture, fold shadow, depth */
-.cover-inside{ position:absolute; top:0; left:0; right:0; height:54%; z-index:1;
+.cover-inside{ position:absolute; top:0; left:0; right:0; height:22%; z-index:1;
   background:
     linear-gradient(180deg, rgba(76,44,38,.46) 0%, rgba(96,60,52,.22) 24%, rgba(255,246,240,.05) 52%, rgba(96,60,52,.20) 100%),
     url('assets/envelope-texture.png') center top/cover #C29A8E;
   clip-path:polygon(0 0,50% 70%,100% 0);
   filter:brightness(.82) saturate(1.04); }
-.cover-inside-svg{ position:absolute; top:0; left:0; right:0; height:54%; width:100%; z-index:1; pointer-events:none; }
-.cover-flap{ position:absolute; top:0; left:0; right:0; height:54%; z-index:3; transform-origin:50% 0;
+.cover-inside-svg{ position:absolute; top:0; left:0; right:0; height:22%; width:100%; z-index:1; pointer-events:none; }
+.cover-flap{ position:absolute; top:0; left:0; right:0; height:22%; z-index:3; transform-origin:50% 0;
   transition:transform 1.7s cubic-bezier(.6,.05,.18,1); }
 .cover-flap-paper{ position:absolute; inset:0;
   background:url('assets/envelope-texture.png') center top/cover #EFDAD1;
   clip-path:polygon(0 0,100% 0,50% 100%); }
 .cover-flap-svg{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
-.cover-flap-under{ position:absolute; top:6px; left:0; right:0; height:54%; z-index:2; pointer-events:none;
+.cover-flap-under{ position:absolute; top:6px; left:0; right:0; height:22%; z-index:2; pointer-events:none;
   clip-path:polygon(0 0,100% 0,50% 100%); background:rgba(110,70,60,.18); filter:blur(7px); transition:opacity .9s; }
 .cover-opening .cover-flap-under,.cover-lifting .cover-flap-under,.cover-gone .cover-flap-under{ opacity:0; }
 /* seal sits ON the flap tip — it hinges up with the flap */
@@ -44,7 +44,7 @@ img{ -webkit-user-drag:none; user-select:none; }
   width:min(42vw,168px); }
 .cover-seal::before{ display:none; }
 .cover-seal img{ width:100%; display:block; }
-.cover-body{ position:absolute; left:0; right:0; bottom:0; height:46%; z-index:2;
+.cover-body{ position:absolute; left:0; right:0; bottom:0; height:55%; z-index:2;
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; }
 .cover-invited{ font-family:var(--display); font-style:italic; font-size:clamp(28px,8vw,42px); color:#7a5346; letter-spacing:.5px;
   white-space:nowrap; text-shadow:0 1px 0 rgba(255,255,255,.5); }
