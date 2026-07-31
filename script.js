@@ -41,21 +41,13 @@
 
   /* ===================== ENVELOPE ===================== */
   var music = document.getElementById('bg-music');
-  music.volume = 0;
-  music.muted = true;
-  music.play().catch(function () {});
+  music.volume = 0.5;
 
-  function unmuteMusic() {
-    music.muted = false;
-    music.volume = 0.5;
-    if (music.paused) music.play().catch(function () {});
-  }
-
-  ['click', 'touchstart', 'mousemove', 'keydown', 'scroll', 'pointerdown'].forEach(function (evt) {
-    document.addEventListener(evt, function handler() {
-      unmuteMusic();
-      document.removeEventListener(evt, handler);
-    }, { once: true });
+  var splash = document.getElementById('splash');
+  splash.addEventListener('click', function () {
+    music.play().catch(function () {});
+    splash.classList.add('hide');
+    setTimeout(function () { splash.style.display = 'none'; }, 900);
   });
 
   function openCover() {

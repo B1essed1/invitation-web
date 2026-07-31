@@ -15,6 +15,17 @@ html.js .reveal.in{ opacity:1; transform:none; }
 ::selection{ background:#F0DEC8; }
 img{ -webkit-user-drag:none; user-select:none; }
 
+/* ===================== SPLASH INTRO ===================== */
+.splash{ position:fixed; inset:0; z-index:2000; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
+  background:linear-gradient(180deg,#F6E7E1,#EFD8D0); cursor:pointer; transition:opacity .8s ease, transform .8s ease; }
+.splash.hide{ opacity:0; transform:scale(1.05); pointer-events:none; }
+.splash-names{ font-family:var(--script); font-size:clamp(32px,9vw,46px); color:var(--gold); margin:0; text-align:center; }
+.splash-sub{ font-family:var(--display); font-style:italic; font-size:clamp(14px,4vw,18px); color:var(--muted); margin:0; letter-spacing:2px; }
+.splash-btn{ width:64px; height:64px; border-radius:50%; border:2px solid var(--gold); display:flex; align-items:center; justify-content:center;
+  color:var(--gold); margin-top:20px; animation:pulse 2s ease-in-out infinite; }
+@keyframes pulse{ 0%,100%{ transform:scale(1); opacity:1; } 50%{ transform:scale(1.08); opacity:.8; } }
+.splash-hint{ font-family:var(--body); font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin:0; }
+
 /* ===================== ENVELOPE COVER ===================== */
 .cover{ position:fixed; inset:0; margin:0 auto; width:min(100vw,480px); z-index:1000; cursor:pointer; perspective:1500px;
   background:url('assets/envelope-texture.png') center/cover #EFDAD1;
