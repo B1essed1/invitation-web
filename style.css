@@ -40,7 +40,7 @@ img{ -webkit-user-drag:none; user-select:none; }
   clip-path:polygon(0 0,100% 0,50% 100%); background:rgba(110,70,60,.18); filter:blur(7px); transition:opacity .9s; }
 .cover-opening .cover-flap-under,.cover-lifting .cover-flap-under,.cover-gone .cover-flap-under{ opacity:0; }
 /* seal sits ON the flap tip — it hinges up with the flap */
-.cover-seal{ position:absolute; top:96%; left:50%; transform:translate(-50%,-50%); z-index:6;
+.cover-seal{ position:absolute; top:100%; left:50%; transform:translate(-50%,-50%); z-index:6;
   width:min(42vw,168px); }
 .cover-seal::before{ display:none; }
 .cover-seal img{ width:100%; display:block; }
