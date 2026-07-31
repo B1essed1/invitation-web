@@ -40,6 +40,24 @@
   }
 
   /* ===================== ENVELOPE ===================== */
+  var music = document.getElementById('bg-music');
+  music.volume = 0;
+  music.muted = true;
+  music.play().catch(function () {});
+
+  function unmuteMusic() {
+    music.muted = false;
+    music.volume = 0.5;
+    if (music.paused) music.play().catch(function () {});
+  }
+
+  ['click', 'touchstart', 'mousemove', 'keydown', 'scroll', 'pointerdown'].forEach(function (evt) {
+    document.addEventListener(evt, function handler() {
+      unmuteMusic();
+      document.removeEventListener(evt, handler);
+    }, { once: true });
+  });
+
   function openCover() {
     if (phase !== 'closed') return;
     setPhase('opening');
