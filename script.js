@@ -5,11 +5,11 @@
   'use strict';
 
   var CONFIG = {
-    dateISO: '2026-07-10T18:00:00',
-    time: 'Soat 18:00',
-    venueName: 'SARDOBA TO\'YXONASI',
-    lat: 40.99429,
-    lng: 71.667252,
+    dateISO: '2026-08-14T16:00:00',
+    time: 'Soat 16:00',
+    venueName: 'VISOL TO\'YXONASI',
+    lat: 40.9285695,
+    lng: 71.8455524,
   };
 
   var UZ_DAYS = ['Yakshanba', 'Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'];
