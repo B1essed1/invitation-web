@@ -57,7 +57,7 @@ img{ -webkit-user-drag:none; user-select:none; }
 .cover-opening .cover-flap,.cover-lifting .cover-flap,.cover-gone .cover-flap{ transform:rotateX(172deg); }
 /* seal rides the flap up, then slips out of sight as the flap passes vertical — no mirrored backface */
 .cover-opening .cover-seal,.cover-lifting .cover-seal,.cover-gone .cover-seal{ opacity:0; transition:opacity .45s ease .55s; }
-.cover-opening .cover-body,.cover-opening .cover-hint{ opacity:0; transition:opacity .7s; }
+.cover-opening .cover-hint{ opacity:0; transition:opacity .7s; }
 .cover-lifting,.cover-gone{ opacity:0; transform:translateY(-26px) scale(1.05); pointer-events:none; }
 
 /* ===================== INVITATION BLOCK ===================== */
