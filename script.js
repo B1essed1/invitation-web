@@ -53,9 +53,97 @@
     document.removeEventListener('touchstart', startMusicTouch);
   });
 
+  /* ===================== CONFETTI FIREWORK ===================== */
+  var confettiBox = document.getElementById('confetti-container');
+  var COLORS = ['#E53935','#FFB300','#43A047','#1E88E5','#E040FB','#FF6D00','#00BCD4','#FFD600','#F50057','#76FF03'];
+  var SPARK_COLORS = ['#FFD700','#FFF8DC','#FFFACD','#F0E68C','#FFE4B5','#FFFFFF','#E8E8E8'];
+
+  function dropConfetti(count, duration) {
+    var w = Math.min(window.innerWidth, 480);
+    var h = window.innerHeight;
+    for (var i = 0; i < count; i++) {
+      (function (delay) {
+        setTimeout(function () {
+          var isSpark = Math.random() < 0.35;
+          var el = document.createElement('div');
+          el.className = isSpark ? 'confetti-piece spark' : 'confetti-piece';
+
+          var color;
+          if (isSpark) {
+            color = SPARK_COLORS[Math.floor(Math.random() * SPARK_COLORS.length)];
+            var sz = 3 + Math.random() * 5;
+            el.style.width = sz + 'px';
+            el.style.height = sz + 'px';
+            el.style.color = color;
+            el.style.background = color;
+            el.style.animationDuration = (0.2 + Math.random() * 0.4).toFixed(2) + 's';
+          } else {
+            color = COLORS[Math.floor(Math.random() * COLORS.length)];
+            var pw = 5 + Math.random() * 7;
+            var ph = 3.5 + Math.random() * 5;
+            el.style.width = pw + 'px';
+            el.style.height = ph + 'px';
+            el.style.background = color;
+          }
+
+          var startX = Math.random() * w;
+          el.style.left = startX + 'px';
+          el.style.top = '-12px';
+          confettiBox.appendChild(el);
+
+          var x = 0, y = 0, t = 0, opacity = 1;
+          var vy = 1.5 + Math.random() * 2.5;
+          var vx = (Math.random() - 0.5) * 1.2;
+          var spin = (Math.random() - 0.5) * 12;
+          var rot = Math.random() * 360;
+          var wobble = 0.02 + Math.random() * 0.04;
+          var wobbleAmp = 0.3 + Math.random() * 0.8;
+          var flipSpeed = 0.06 + Math.random() * 0.08;
+          var flipOffset = Math.random() * Math.PI * 2;
+          var glintSpeed = 0.04 + Math.random() * 0.06;
+          var glintOffset = Math.random() * Math.PI * 2;
+
+          function tick() {
+            t++;
+            vx += Math.sin(t * wobble) * wobbleAmp * 0.06;
+            x += vx;
+            y += vy;
+            rot += spin;
+            if (y > h + 20) { el.remove(); return; }
+            if (t > 140) opacity = Math.max(0, opacity - 0.025);
+
+            var flip = Math.cos(t * flipSpeed + flipOffset);
+            var scaleX = 0.3 + Math.abs(flip) * 0.7;
+            var brightness = 0.5 + (Math.sin(t * glintSpeed + glintOffset) * 0.5 + 0.5) * 1.8;
+
+            el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) rotate(' + rot.toFixed(0) + 'deg) scaleX(' + scaleX.toFixed(2) + ')';
+            if (!isSpark) {
+              el.style.opacity = opacity;
+              el.style.filter = 'brightness(' + brightness.toFixed(2) + ')';
+            }
+            if (opacity > 0) {
+              requestAnimationFrame(tick);
+            } else {
+              el.remove();
+            }
+          }
+          requestAnimationFrame(tick);
+        }, delay);
+      })(Math.random() * duration);
+    }
+  }
+
+  function fireConfetti() {
+    dropConfetti(300, 600);
+    setTimeout(function () { dropConfetti(250, 800); }, 500);
+    setTimeout(function () { dropConfetti(150, 600); }, 1200);
+    setTimeout(function () { dropConfetti(100, 500); }, 1800);
+  }
+
   function openCover() {
     if (phase !== 'closed') return;
     setPhase('opening');
+    setTimeout(function () { fireConfetti(); }, 600);
     setTimeout(function () { setPhase('lifting'); }, 1500);
     setTimeout(function () {
       setPhase('gone');
